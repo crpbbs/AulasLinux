@@ -1,6 +1,12 @@
-# Introdução:
+# Título: Aula0-Baixa de ISO do Linux Debian 12 e Criação de Pen-Drive Multi-Bootável
 
-Bom dia, boa tarde, boa noite, Seja bem-vindo ao meu canal, onde juntos construíremos habilidades que vão além do sistema operacional.
+## Subtítulo: Como Baixar e criar um pen-drive Multi-Bootável
+
+### Introdução:
+
+Bom dia, boa tarde, boa noite.
+
+Seja bem-vindo ao meu canal, onde juntos construíremos habilidades que vão além do sistema operacional.
 
 Aperte o botão de inscrição e venha fazer parte desta jornada emocionante pelo Linux!
 
