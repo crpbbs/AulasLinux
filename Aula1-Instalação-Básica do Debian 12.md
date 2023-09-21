@@ -170,14 +170,3 @@ Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do
 
 * 3 Primeiro boot no novo sistema já instalado
 
-
-
-                
-
-
-
-
-
-
-
-
