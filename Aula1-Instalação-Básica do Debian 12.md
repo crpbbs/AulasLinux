@@ -35,26 +35,19 @@ Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do
     Advanced Options
 
         Expert Install
-
             Choose Language = Português do Brasil
                 Localidade = Brasil
                 Configurar Locales = Brasil - pt_BR.UTF-8
                 Configurar Locales - Pressione ENTER
-
             Configure o teclado = Portugues Brasileiro
-
             Detectar e montar mídia de instalação = [*] usb-storage (USB storage) <Continuar>
-
             Carregar componentes a partir da mídia de instalação <Continuar>
-
             Detectar hardware de rede
-
             Configurar a rede
                 Configurar a rede automaticamente <Sim>
                 Tempo de espera = 3 <Continuar>
                 Nome da máquina = vm-debian
                 Nome do domínimo = casa.local
-            
             Configurar usuário e senhas
                 Permiti login como root = <Sim>
                 Senha do root = VOCÊ ESCOLHE QUAL VAI USAR
@@ -64,14 +57,11 @@ Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do
                 Nome de usuário para sua conta = UM LOGIN DE ACESSO EM MINÚSCULO
                 Senha para o novo usuário = VOCÊ ESCOLHE QUAL VAI USAR
                 Repete a mesma senha denovo do novo usuário
-
             Configurar o Relógio
                 Ajustar o relógio usando NTP = <Sim>
                 Servidor NTP a ser usado = 0.debian.pool.ntp.org <Continuar>
                 Estado para definir fudo horário = São Paulo
-
             Detectar discos
-
             Particionar discos
                 Manual
                     Disco virtual 1 (vda) - 42.9 GB Virtio Block Device
@@ -118,11 +108,9 @@ Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do
                                     Finalizar a configuração da partição
                             Finalizar o particionamento e escrever as mudanças no disco
                 Escrever as mudanças nos discos? = <Sim>
-
             Instalar o sistema básico
                 Kernel a ser instalado = linux-image-amd64
                 Direcionado: Só inclui drivers necessários para este sistema
-
             Configurar o gerenciador de pacotes
                 Ler mídia de instalação adicional = <Não>
                 Usar um espelho de rede = <Sim>
@@ -137,7 +125,6 @@ Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do
                     [*] atualizações de segurança (de security.debian.org)
                     [*] atualizações da distribuição
                     [ ] software portado de versões mais novas
-            
             Selecionar e instalar software
                 Configurando discover:
                     Gerenciamento de atualizações neste sistema:
@@ -157,16 +144,55 @@ Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do
                     [ ] servidor web
                     [ ] servidor SSH
                     [ ] utilitários de sistema padrão
-            
             Instalar o carregador de inicialização GRUB
                 Executar os-prober automaticamente para detectar outros sistemas = <Não>
                 Instalar o carregador de inicialização GRUB no disco primário ? = <Sim>
                     Dispositivo no qual instalar o carregador de inicialização:
                         /dev/vda
-            
             Finalizar a instalação
                 O relógio do sistema está configurado para UTC ? <Sim>
                 Por favor, escolha continuar para reinicializar o computador <Continuar>
 
 * 3 Primeiro boot no novo sistema já instalado
 
+    Entrar com seu usuário normal e tentar fazer um apt update
+
+    ```console
+    apt update
+    ```
+
+    ```console
+    df -h
+    ```
+    
+    ```console
+    free -h
+    ```
+
+    Sair com o exit e voltar como root
+
+    ```console
+    exit
+    ```
+
+    Agora sim vamos fazer um apt update para ver se tem atualizações.
+
+    ```console
+    apt update
+    ```
+
+    ```console
+    apt upgrade
+    ```
+    
+    ```console
+    ifconfig
+    apt install net-tools
+    ifconfig
+    ```
+
+    ```console
+    halt -p
+    ```
+
+# FIM DA AULA
