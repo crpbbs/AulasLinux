@@ -1,11 +1,15 @@
 # Título: Aula3-Instalação-Básica do Debian 12
 ## Subtítulo: Como Instalar, Configurar e Usar o Docker no Debian 12
 
+![](imagens/debian-e-pinguin-121.png)
+
 **Introdução:**
 
 Bom dia, boa tarde, boa noite.
+
 O objetivo desta vídeo-aula é dar continuidade a aula 2, onde terminamos a instalação básica do debian 12.
-Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Instalar, Configurar e Usar o Docker no Debian 12.
+
+Vamos implementar melhorias no aspecto visual de nosso desktop e nas próximas aulas abordaremos a instalação e configuração do kvm e posteriormente trataremos do assunto sobre docker.
 
 * 1 Atualização do Sistema:
 
@@ -91,7 +95,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
 
     No site oficial do <a href="https://ohmyz.sh/" target="_blank" rel="noreferrer noopener nofollow">Oh My Zsh</a>, você encontra telas com exemplos dos diversos temas, escolha um e mude no arquivo ~/.zshrc a variável ZSH_THEME para o da sua preferência.
 
-    Desinstalando Oh My Zsh
+    Desinstalando **Oh My Zsh**
 
     Oh My Zsh não é para todos. Sentiremos sua falta, mas queremos tornar esta separação fácil.
 
@@ -103,9 +107,24 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     uninstall_oh_my_zsha
     ```
 
+    Instalando o **neofetch**
+
+    ```console
+    sudo apt install neofetch
+    ```
+
+    Inclua o neofetch no final do seu arquivo de configuração do shell. Abra o arquivo **/home/$USER/.zsharc** e inclua na última linha o comando **neofetch**.
+
+    ```console
+    vi /home/$USER/.zshrc
+    ```
+    Saia do shell com exit e entre novamente para ver o efeito do programa neofetch. Deverá ficar como este:
+
+    ![](imagens/neofetch.png)
+
     Configuração de Ambiente de Trabalho:
 
-    Vamos arrumar alguns aspectos de aparência do nosso desktop
+    Vamos arrumar alguns aspectos de aparência do nosso desktop, como tamanho dos ícones, tamanho do painel 1, tamanho dos ícones no painel 1, etc...
 
 * 3 Baixando novos papéis de parede para o Debian
 
