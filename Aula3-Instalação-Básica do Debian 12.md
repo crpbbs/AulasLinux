@@ -14,9 +14,14 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     sudo apt upgrade
     ```
 
+<a href="https://en.wikipedia.org/wiki/The_Milagro_Beanfield_War_(novel)" target="_blank">a novel</a>
+
+<a href="https://www.example.com/my great page">link</a>
+
+
 * 2 Instalação de pacotes essenciais e complementares:
 
-    >Vamos instalar alguns pacotes essenciais e complementares
+    Vamos instalar alguns pacotes essenciais e complementares
 
     O programa **figlet** é um utilitário que nos permite criar alguns banners de texto ASCII incríveis e atraentes. Ele cria letras grandes ou banners de texto ASCII usando texto simples.
 
@@ -41,7 +46,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     sudo apt install file tree xxd
     ```
 
-    >Instalando **Zshell** e o **Git**
+    Instalando **Zshell** e o **Git**
 
     **Zshell**, também conhecido como **Zsh**, é um interpretador de linha de comando para sistemas Unix-like. Ele é uma poderosa alternativa ao shell padrão (como o **Bash**) e oferece recursos avançados, como autocompletar, correção ortográfica, histórico de comandos melhorado, personalização extensiva e muito mais.
 
@@ -65,7 +70,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
 
     Entrar no Terminal e escolher a opção (2) para criar o arquivo .zshrc no home do usuário normal.
 
-    >Instalando temas para o zsh.
+    Instalando temas para o zsh.
 
     Baixe o **install.sh** no **github** do **ohmyzsh** com o **wget** e execute o **install.sh**.
 
@@ -90,7 +95,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     
     No site oficial do [Oh My Zsh](https://ohmyz.sh/), você encontra telas com exemplos dos diversos temas, escolha um e mude no arquivo ~/.zshrc a variável ZSH_THEME para o da sua preferência.
 
-    >Desinstalando Oh My Zsh
+    Desinstalando Oh My Zsh
 
     Oh My Zsh não é para todos. Sentiremos sua falta, mas queremos tornar esta separação fácil.
 
@@ -102,7 +107,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     uninstall_oh_my_zsha
     ```
 
-    >Configuração de Ambiente de Trabalho:
+    Configuração de Ambiente de Trabalho:
 
     Vamos arrumar alguns aspectos de aparência do nosso desktop
 
