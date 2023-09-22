@@ -1,0 +1,5 @@
+KVM (Kernel-based Virtual Machine) é uma tecnologia de virtualização de código aberto incorporada ao kernel do Linux. Ele permite que os usuários executem máquinas virtuais (VMs) no Linux, fornecendo um ambiente de virtualização completo. KVM aproveita as extensões de virtualização de hardware fornecidas pelos processadores modernos para oferecer um desempenho superior.
+
+QEMU (Quick Emulator) é uma ferramenta de virtualização de código aberto que fornece emulação de hardware completa para executar VMs em várias arquiteturas de processadores, incluindo x86, ARM, PowerPC, MIPS, entre outras. O QEMU é frequentemente usado em conjunto com o KVM para fornecer uma solução completa de virtualização no Linux.
+
+Juntos, KVM e QEMU fornecem uma plataforma poderosa para virtualização de hardware no Linux.

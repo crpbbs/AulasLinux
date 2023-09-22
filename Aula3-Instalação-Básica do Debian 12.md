@@ -1,5 +1,6 @@
 # Título: Aula3-Instalação-Básica do Debian 12
-## Subtítulo: Como Instalar, Configurar e Usar o Docker no Debian 12
+## Subtítulo: Como Instalar e Configurar o desktop do debian 12
+### Melhorando a aparência
 
 ![](imagens/debian-e-pinguin-121.png)
 
@@ -9,7 +10,7 @@ Bom dia, boa tarde, boa noite.
 
 O objetivo desta vídeo-aula é dar continuidade a aula 2, onde terminamos a instalação básica do debian 12.
 
-Vamos implementar melhorias no aspecto visual de nosso desktop e nas próximas aulas abordaremos a instalação e configuração do kvm e posteriormente trataremos do assunto sobre docker.
+Vamos implementar melhorias no aspecto visual de nosso desktop e nas próximas aulas abordaremos a instalação e configuração do kvm e posteriormente trataremos do assunto sobre docker e containers.
 
 * 1 Atualização do Sistema:
 
