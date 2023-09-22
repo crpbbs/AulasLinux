@@ -14,7 +14,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     sudo apt upgrade
     ```
 
-<a href="https://en.wikipedia.org/wiki/The_Milagro_Beanfield_War_(novel)" target="_blank">a novel</a>
+<a href="https://en.wikipedia.org/wiki/The_Milagro_Beanfield_War_(novel)" target="_blank" rel="noreferrer noopener nofollow" >a novel</a>
 
 <a href="https://www.example.com/my great page">link</a>
 
