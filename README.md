@@ -1,5 +1,7 @@
 # AulasLinux
 
+ ![](imagens/tux.avif) ![](imagens/debian_logo_icon_121.png) ![](imagens/gnu-linux-121.webp)
+
 ## Repositório Linux para Vídeo-Aulas: Instalação, Configuração e Máquinas Virtuais
 
 Repositório Linux para Vídeo-Aulas: Aprenda tudo sobre Linux, desde a instalação até as configurações avançadas e máquinas virtuais.
