@@ -14,13 +14,14 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     sudo apt upgrade
     ```
 
-* 2 Instalação de Pacotes Essenciais:
+* 2 Instalação de pacotes essenciais e complementares:
 
-    Vamos instalar alguns pacotes essenciais
+    >Vamos instalar alguns pacotes essenciais e complementares
 
     O programa **figlet** é um utilitário que nos permite criar alguns banners de texto ASCII incríveis e atraentes. Ele cria letras grandes ou banners de texto ASCII usando texto simples.
 
     O programa **toilet** ajuda a criar um texto personalizado ou banner, que pode ser usado dentro de um script, por exemplo, ou diretamente na linha de comando.
+
     ```console
     sudo apt install figlet
     sudo apt install toilet
@@ -40,7 +41,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     sudo apt install file tree xxd
     ```
 
-* 3 Instalando Zshell
+    >Instalando **Zshell** e o **Git**
 
     **Zshell**, também conhecido como **Zsh**, é um interpretador de linha de comando para sistemas Unix-like. Ele é uma poderosa alternativa ao shell padrão (como o **Bash**) e oferece recursos avançados, como autocompletar, correção ortográfica, histórico de comandos melhorado, personalização extensiva e muito mais.
 
@@ -52,15 +53,21 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
 
     ```console
     sudo apt install zsh git
+    ```
+
+    Para mudar do bash para o zsh faça:
+
+    ```console
     chsh -s $(which zsh)
     ```
-    Encerrar a seção e iniciar novamente.
 
-    Entrar no Terminal e escolher a opção (2) para criar o arquivo .zshrc
+    Encerrar a seção e iniciar novamente para que produza efeito.
 
-    Instalando temas para o zsh.
+    Entrar no Terminal e escolher a opção (2) para criar o arquivo .zshrc no home do usuário normal.
 
-    Baixe o install.sh no github do ohmyzsh com o wget e execute o install.sh
+    >Instalando temas para o zsh.
+
+    Baixe o **install.sh** no **github** do **ohmyzsh** com o **wget** e execute o **install.sh**.
 
     ```console
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -73,6 +80,7 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     vi ~/.zshrc
     ZSH_THEME="bira"
     ```
+
     Saia do terminal com exit e entre novamente. Deve estar com esta aparência:
 
     ![Prompt do zsh com o tema "bira"](imagens/Aula3-Prompt-zsh.jpg)
@@ -82,44 +90,58 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     
     No site oficial do [Oh My Zsh](https://ohmyz.sh/), você encontra telas com exemplos dos diversos temas, escolha um e mude no arquivo ~/.zshrc a variável ZSH_THEME para o da sua preferência.
 
-* 4 Desinstalando Oh My Zsh
+    >Desinstalando Oh My Zsh
 
     Oh My Zsh não é para todos. Sentiremos sua falta, mas queremos tornar esta separação fácil.
 
-    Se você deseja desinstalar oh-my-zsh, basta executar uninstall_oh_my_zsha partir da linha de comando. Ele se removerá e reverterá sua configuração bash anterior ao zsh.
+    Se você deseja desinstalar oh-my-zsh, basta executar **uninstall_oh_my_zsha** partir da linha de comando. Ele se removerá e reverterá sua configuração bash anterior ao zsh.
 
+    ### Faça isso somente se quiser o bash de volta.
 
+    ```console
+    uninstall_oh_my_zsha
+    ```
 
-ver site para wallpaper
-https://wallpaperswide.com/
-sudo apt install dia dia-shapes dia-rib-network
-Olhe este site
-https://www.xfce-look.org/browse/
->>>Baixar o ocs-url para o Debian 12
->>>opendesktop.org/p/1136805/
->>>Vá para a pasta download e instale com
->>>coloque ocs-url e aperte TAB
-sudo apt install ./ocs-url_3.1.0-0ubuntu1_amd64.deb
-instalar o tema Goldy-Dark-GTK
+    >Configuração de Ambiente de Trabalho:
 
+    Vamos arrumar alguns aspectos de aparência do nosso desktop
 
+* 3 Baixando novos papéis de parede para o Debian
 
+    Entrar no site [wallpaperswide](https://wallpaperswide.com/) e baixar os papéis de parede que mais lhe agrade.
 
+    Instalando novos temas para o Debian
 
-1. Configuração de Ambiente de Trabalho:
+    Entrar no site [xfce-look.org/browse](https://www.xfce-look.org/browse/) e baixar os temas que mais lhe agrade.
 
-Vamos arrumar alguns aspectos de aparência do nosso desktop
+    instalar o tema Goldy-Dark-GTK
 
-Vamos configurar o ambiente de trabalho.
+    Instalando o ocs-url para o Debian
 
-4. Configuração de Rede:
+    Entrar no site [opendesktop.org/p/1136805/](https://www.opendesktop.org/p/1136805/) e baixar o ocs-url para o Debian. Atualmente [ocs-url_3.1.0-0ubuntu1_amd64.deb](https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1467909105/ocs-url_3.1.0-0ubuntu1_amd64.deb?response-content-disposition=attachment%3B%2520ocs-url_3.1.0-0ubuntu1_amd64.deb&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=RWJAQUNCHT7V2NCLZ2AL%2F20230922%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230922T223917Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=723d3bc84e575b3920b07e1a0506d075f1a545c5c09871c49e1ed7a8d3afd20d) última alteração feita em 2018-07-05.
+    
+    Para instalar, vá no diretório que você baixou o arquivo e faça:
 
-Vamos configurar a rede
+    ```console
+    sudo apt install ./ocs-url_3.1.0-0ubuntu1_amd64.deb
+    ```
 
-Conclusão:
+* 4 Instalando o dia-shapes e o dia-rib-network
 
-Encerramos esta vídeo aula neste momento e na próxima aula iremos apreender sobre docker.
+    **Dia-shapes** é um recurso do software Dia, que é um programa de desenho vetorial disponível para sistemas operacionais Linux. Ele permite criar e manipular diagramas técnicos, fluxogramas, organogramas e outras representações gráficas.
+
+    **Dia-Rib-Network** é uma ferramenta de simulação de redes em tempo real para o sistema operacional Linux. Ela permite a criação e configuração de redes virtuais com múltiplos nós e a simulação de tráfego de rede entre eles.
+
+    ```console
+    sudo apt install dia dia-shapes dia-rib-network
+    ```
+
+## Conclusão:
+
+Encerramos esta vídeo aula neste momento e na próxima aula iremos apreender sobre kvm.
 
 Encerramento:
 
 Agradeço por assistirem essa vídeo aula e caso tenha gostado inscreva-se no canal, curta e compartilhe com seus amigos.
+
+# FIM
