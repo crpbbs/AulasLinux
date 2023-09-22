@@ -14,11 +14,6 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     sudo apt upgrade
     ```
 
-<a href="https://en.wikipedia.org/wiki/The_Milagro_Beanfield_War_(novel)" target="_blank" rel="noreferrer noopener nofollow" >a novel</a>
-
-<a href="https://www.example.com/my great page">link</a>
-
-
 * 2 Instalação de pacotes essenciais e complementares:
 
     Vamos instalar alguns pacotes essenciais e complementares
@@ -91,9 +86,10 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
     ![Prompt do zsh com o tema "bira"](imagens/Aula3-Prompt-zsh.jpg)
 
     Para mais informações sobre o zshc dê uma olhada no site:
-    [GitHub do Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
     
-    No site oficial do [Oh My Zsh](https://ohmyz.sh/), você encontra telas com exemplos dos diversos temas, escolha um e mude no arquivo ~/.zshrc a variável ZSH_THEME para o da sua preferência.
+    <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noreferrer noopener nofollow">GitHub do Oh My Zsh</a>
+
+    No site oficial do <a href="https://ohmyz.sh/" target="_blank" rel="noreferrer noopener nofollow">Oh My Zsh</a>, você encontra telas com exemplos dos diversos temas, escolha um e mude no arquivo ~/.zshrc a variável ZSH_THEME para o da sua preferência.
 
     Desinstalando Oh My Zsh
 
@@ -113,17 +109,17 @@ Vamos implementar melhorias no aspecto de nosso desktop e em seguida vamos Insta
 
 * 3 Baixando novos papéis de parede para o Debian
 
-    Entrar no site [wallpaperswide](https://wallpaperswide.com/) e baixar os papéis de parede que mais lhe agrade.
+    Entrar no site <a href="https://wallpaperswide.com/" target="_blank" rel="noreferrer noopener nofollow">wallpaperswide</a> e baixar os papéis de parede que mais lhe agrade.
 
     Instalando novos temas para o Debian
 
-    Entrar no site [xfce-look.org/browse](https://www.xfce-look.org/browse/) e baixar os temas que mais lhe agrade.
+    Entrar no site <a href="https://www.xfce-look.org/browse/" target="_blank" rel="noreferrer noopener nofollow">xfce-look.org/browse</a> e baixar os temas que mais lhe agrade.
 
     instalar o tema Goldy-Dark-GTK
 
     Instalando o ocs-url para o Debian
 
-    Entrar no site [opendesktop.org/p/1136805/](https://www.opendesktop.org/p/1136805/) e baixar o ocs-url para o Debian. Atualmente [ocs-url_3.1.0-0ubuntu1_amd64.deb](https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1467909105/ocs-url_3.1.0-0ubuntu1_amd64.deb?response-content-disposition=attachment%3B%2520ocs-url_3.1.0-0ubuntu1_amd64.deb&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=RWJAQUNCHT7V2NCLZ2AL%2F20230922%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230922T223917Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=723d3bc84e575b3920b07e1a0506d075f1a545c5c09871c49e1ed7a8d3afd20d) última alteração feita em 2018-07-05.
+    Entrar no site <a href="https://www.opendesktop.org/p/1136805/" target="_blank" rel="noreferrer noopener nofollow">opendesktop.org/p/1136805/</a> e baixar o ocs-url para o Debian. Atualmente <a href="https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1467909105/ocs-url_3.1.0-0ubuntu1_amd64.deb?response-content-disposition=attachment%3B%2520ocs-url_3.1.0-0ubuntu1_amd64.deb&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=RWJAQUNCHT7V2NCLZ2AL%2F20230922%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230922T223917Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=723d3bc84e575b3920b07e1a0506d075f1a545c5c09871c49e1ed7a8d3afd20d" target="_blank" rel="noreferrer noopener nofollow">ocs-url_3.1.0-0ubuntu1_amd64.deb</a> última alteração feita em 2018-07-05.
     
     Para instalar, vá no diretório que você baixou o arquivo e faça:
 
