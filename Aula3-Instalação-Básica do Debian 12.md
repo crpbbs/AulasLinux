@@ -53,7 +53,7 @@ O programa **xxd** é usado para criar uma representação hexadecimal (hexdump)
 sudo apt install file tree xxd
 ```
 
-**Zshell**, também conhecido como **Zsh**, é um interpretador de linha de comando para sistemas Unix-like. Ele é uma poderosa alternativa ao shell padrão (como o **Bash**) e oferece recursos avançados, como autocompletar, correção ortográfica, histórico de comandos melhorado, personalização extensiva e muito mais. O **Zsh** é altamente configurável e suporta plugins e temas, permitindo que os usuários personalizem sua experiência de linha de comando de acordo com suas preferências. Ele também possui uma sintaxe semelhante ao Bash, o que facilita a transição para os usuários que estão acostumados com o Bash.
+**Zshell**, também conhecido como **Zsh**, é um interpretador de linha de comando para sistemas Unix-like. Ele é uma poderosa alternativa ao shell padrão (como o **Bash**) e oferece recursos avançados, como autocompletar, correção ortográfica, histórico de comandos melhorado, personalização extensiva e muito mais. O **Zsh** é altamente configurável e suporta plugins e temas, permitindo que os usuários personalizem sua experiência de linha de comando de acordo com suas preferências. Ele também possui uma sintaxe semelhante ao Bash, o que facilita a transição para os usuários que estão acostumados com o Bash. Para mais informações sobre o **Zsh** visite o site https://github.com/zsh-users/zsh.
 
 O **Git** é um sistema de controle de versão distribuído, amplamente utilizado para gerenciar projetos de desenvolvimento de software. Ele permite que várias pessoas trabalhem em um projeto simultaneamente, rastreando todas as alterações feitas nos arquivos ao longo do tempo. O **Git** armazena todas as versões de um projeto em um repositório, permitindo que os desenvolvedores acessem qualquer versão específica do código quando necessário. Além disso, ele facilita a colaboração entre membros da equipe, permitindo que eles compartilhem suas alterações e mesclando-as de forma eficiente.
 
@@ -80,20 +80,96 @@ wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 sh install.sh
 ```
 
-Edite o arquivo ~/.zshrc e mude a variável ZSH_THEME para o tema que mais lhe agrade. Eu estou usando o tema "bira".
+Edite o arquivo ~/.zshrc e mude a variável ZSH_THEME para o tema que mais lhe agrade. Eu estou usando o tema "jonathan".
 
 ```console
 vi ~/.zshrc
-ZSH_THEME="bira"
+ZSH_THEME="jonathan"
 ```
 
 Saia do terminal com exit e entre novamente. Deve estar com esta aparência:
 
-![Prompt do zsh com o tema "bira"](imagens/Aula3-Prompt-zsh.jpg)
+Caso use o tema jonathan ficará como esse:
 
-Para mais informações sobre o zshc dê uma olhada no site: <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noreferrer noopener nofollow">GitHub do Oh My Zsh</a>
+![Prompt do zsh com o tema "jonathan"](imagens/Aula3-Prompt-zsh-jonathan.jpg)
 
-No site oficial do <a href="https://ohmyz.sh/" target="_blank" rel="noreferrer noopener nofollow">Oh My Zsh</a>, você encontra telas com exemplos dos diversos temas, escolha um e mude no arquivo ~/.zshrc a variável ZSH_THEME para o da sua preferência.
+Caso use o tema bira ficará como esse:
+
+![Prompt do zsh com o tema "bira"](imagens/Aula3-Prompt-zsh-bira.jpg)
+
+Para mais informações sobre o o projeto **Oh My Zsh** dê uma olhada no site: <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank" rel="noreferrer noopener nofollow">https://github.com/ohmyzsh/ohmyzsh</a>
+
+No site sobre temas <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" target="_blank" rel="noreferrer noopener nofollow">https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</a>, você encontra telas com exemplos dos diversos temas, escolha um e mude no arquivo ~/.zshrc a variável ZSH_THEME para o da sua preferência.
+
+Instalando novos plugins para o **Oh My Zsh** através do site <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins" target="_blank" rel="noreferrer noopener nofollow">https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins. Vamos escolher e instalar alguns plugins, como por exemplo: web-search
+
+Vamos digitar o seguinte comando:
+
+```console
+man zsh
+```
+
+Observe que o resultado está em preto e branco.
+
+Agora vamos acrescentar no arquivo .zshrc o plugin colored-man-pages conforme abaixo:
+
+```console
+vi .zshrc
+plugins=(git colored-man-pages)
+```
+
+Digite novamente o mesmo comando anterior para ver como ficou mais destacado.
+
+```console
+man zsh
+```
+
+O plugin autocomplete do Zsh é uma extensão que fornece recursos de autocompletar ao utilizar o terminal Zsh. Ele permite que você pressione a tecla Tab para completar automaticamente comandos, nomes de arquivos, diretórios e outras informações enquanto você digita. Existem vários plugins de autocomplete disponíveis para o Zsh, mas um dos mais populares é o "**zsh-autosuggestions**". Ele exibe sugestões de comandos com base no histórico de digitação anterior, facilitando a digitação de comandos frequentemente usados.
+
+```console
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+```
+
+Edite o arquivo .zshrc e inclua no plugins mais este que acabamos de instalar.
+
+```console
+vi .zshrc
+plugins=(git colored-man-pages zsh-autosuggestions)
+```
+
+Carregue novamente o .zshrc com o comando source.
+
+```console
+source ~/.zshrc
+```
+
+Observe que agora se você digitar algum comando que já tenha digitado antes ele vai sugerir o restante e para aceitar tecle a seta para a direita.
+
+```console
+man zsh
+```
+
+O plugin zsh-syntax-highlighting é uma ferramenta muito útil para realçar a sintaxe do código enquanto você digita no terminal zsh. Ele destaca erros de sintaxe, palavras-chave, variáveis, comandos e muito mais, ajudando a identificar possíveis erros antes mesmo de executar o código.
+
+```console
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+```
+
+```console
+vi .zshrc
+plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
+```
+
+Observe que a partir de agora quando você começa a digitar um comando ele mostra em vermelho e enquanto estiver incompleto ou errado ficará vermelho, assim que estiver certo ele mostra em verde.
+
+O plugin web-search para o Zsh é uma extensão que permite realizar pesquisas na web diretamente do seu terminal Zsh. Com esse plugin, você pode executar pesquisas em mecanismos de busca populares, como Google, Bing, DuckDuckGo, entre outros, sem precisar abrir um navegador. Este plugin já vem pré-instalado então basta editar o arquivo .zshrc e incluir no plugins a palavra web-search.
+
+```console
+vi .zshrc
+plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting web-search)
+```
+
+Agora você já pode digitar comandos no teclado como google qualquer coisa ou youtube qualquer coisa que ele abre o navegador e faz a procura.
 
 Desinstalando **Oh My Zsh**
 
