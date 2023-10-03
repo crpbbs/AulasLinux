@@ -197,7 +197,26 @@ Entramos em nosso servidor VPN.
 
 Já podemos trocar o username e a senha que utilzamos para entrar.
 
-Pensar numa senha forte de 10 dígitos, tipo = **Kb[vW8%8S.JB3W)j7=w&**
+Pensar numa senha forte de 10 dígitos, tipo = **Kb[vW8%8S.JB3W)j7=w&**. Clicamos em Save.
+
+Pronto estamos em nosso servidor. Este é o dashboard do servidor.
+
+![Aula6-Criando-Pritunl-15](imagens/Aula6-Criando-Pritunl-15.png)
+
+
+PAREI AQUI:
+
+https://45.33.65.57/login
+
+login = carlos
+senha = Kb[vW8%8S.JB3W)j7=w&
+
+
+https://45.33.65.57/#dashboard
+
+
+
+
 
 
 
