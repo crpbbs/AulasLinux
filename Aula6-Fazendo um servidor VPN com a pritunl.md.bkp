@@ -1,0 +1,67 @@
+# Fazendo um servidor VPN com a pritunl
+
+Links úteis:
+
+https://www.linode.com/
+
+https://pritunl.com/
+
+https://client.pritunl.com/
+
+https://github.com/pritunl/pritunl-client-electron/releases
+
+O Pritunl VPN é uma solução de código aberto para criar e gerenciar servidores VPN. Ele oferece uma interface web fácil de usar e suporta vários protocolos de VPN, como OpenVPN, IPsec, WireGuard, entre outros.
+
+Vamos utilizar o serviço de hospedagem de máquinas da Linode, assim poderemos acessar nosso vpn de qualquer lugar. Siga os seguintes passos:
+
+# 1 - Criar um servidor através da linode.com/
+
+Entre no site: https://www.linode.com/pt-br/
+
+Logar no Linode com a conta do GOOGLE ou criar um cadastro.
+
+Pensar numa senha forte de 10 dígitos para o root do servidor, tipo = **Kb[vW8%8S.JB3W)j7=w&**
+
+Dê um nome para seu servidor. O meu se chamará **pritunl-newark-crpbbs**.
+
+Sistema operacional que vamos utilizar = DEBIAN 10 Buster
+
+```console
+sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
+deb https://repo.pritunl.com/stable/apt buster main
+EOF
+
+sudo apt install dirmngr
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+sudo apt update
+sudo apt install pritunl-client-electron
+```
+
+
+
+Ubuntu 23.04 Lunar
+sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
+deb https://repo.pritunl.com/stable/apt jammy main
+EOF
+sudo apt --assume-yes install gnupg
+gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+gpg --armor --export 7568D9BB55FF9E5287D586017AE645C0CF8E292A | sudo tee /etc/apt/trusted.gpg.d/pritunl.asc
+sudo apt update
+sudo apt install pritunl-client-electron
+
+
+OU BAIXAR O PACOTE ADEQUADO PELO GITHUB
+wget https://objects.githubusercontent.com/github-production-release-asset-2e65be/35986723/3c84be85-f8e1-44d8-9b77-e20a0f19cd7a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230930%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230930T165822Z&X-Amz-Expires=300&X-Amz-Signature=6c7c969c79d60b0fa56e9a97f00f6c50685433efc1382bad1b85fe6f4338360e&X-Amz-SignedHeaders=host&actor_id=62070772&key_id=0&repo_id=35986723&response-content-disposition=attachment%3B%20filename%3Dpritunl-client-electron_1.3.3637.72-0debian1.bookworm_amd64.deb&response-content-type=application%2Foctet-stream
+
+
+sudo pritunl setup-key
+gerou
+a9e1025aad374eb3919bd9894207812d
+
+
+sudo pritunl default-password
+gerou
+Administrator default password:
+  username: "pritunl"
+  password: "IDc5GcNXFPNM"
+
