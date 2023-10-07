@@ -98,11 +98,13 @@ cd ~/Downloads
 sudo apt install ./pritunl-client-electron_1.3.3637.72-0debian1.bookworm_amd64.deb
 ```
 
+Nosso cliente já está instalado. Provavelmente você o verá no menu Internet como Pritunl Client. Mas não entre nele ainda.
+
 Voltando ao nosso servidor e quando aparecer a mensagem Installation complete! é porque terminou.
 
 ![Aula6-Criando-Pritunl-08](imagens/Aula6-Criando-Pritunl-08.png)
 
-Já pode fechar esta janela. Na verdade nem precisa estar aberta. Foi somente para saber quando o processo termina.
+Já pode fechar esta janela. Na verdade nem precisava estar aberta. Foi somente para saber quando o processo termina.
 
 Observe os dados de nosso servidor, bem como o IP do mesmo.
 
@@ -201,66 +203,190 @@ Pensar numa senha forte de 10 dígitos, tipo = **Kb[vW8%8S.JB3W)j7=w&**. Clicamo
 
 Pronto estamos em nosso servidor. Este é o dashboard do servidor.
 
-![Aula6-Criando-Pritunl-15](imagens/Aula6-Criando-Pritunl-15.png)
+![Aula6-Criando-Pritunl-15](imagens/Aula6-Criando-Pritunl-15-b.png)
 
+Caso saia do servidor, para entrar novamente coloque o seguinte endereço no navegador: https://45.33.65.57/login
 
-PAREI AQUI:
-
-https://45.33.65.57/login
+Coloque seu login e senha, no meu caso são estes:
 
 login = carlos
+
 senha = Kb[vW8%8S.JB3W)j7=w&
 
+Este é o nosso servidor.
 
-https://45.33.65.57/#dashboard
+![Aula6-Criando-Pritunl-16](imagens/Aula6-Criando-Pritunl-16.png)
 
+Clique na opção Users e em seguida em Add Organizations como abaixo:
 
+![Aula6-Criando-Pritunl-17](imagens/Aula6-Criando-Pritunl-17.png)
 
+![Aula6-Criando-Pritunl-18](imagens/Aula6-Criando-Pritunl-18.png)
 
+Coloque o nome da sua organização, se não tiver uma, invente um nome, e clique em Add.
 
+![Aula6-Criando-Pritunl-19](imagens/Aula6-Criando-Pritunl-19.png)
 
+Agora clique em Add User e coloque um nome de usuário e um PIN com 6 números. A organização mantém a que aparecer. Caso queira poderá colocar um email também.
 
+![Aula6-Criando-Pritunl-20](imagens/Aula6-Criando-Pritunl-20.png)
 
-Dê um nome para seu servidor. O meu se chamará **pritunl-newark-crpbbs**.
+No nosso caso vamos colocar o usuário Roberto e o PIN 123456 e clique em Add, como abaixo:
 
-Sistema operacional que vamos utilizar = DEBIAN 10 Buster
+![Aula6-Criando-Pritunl-21](imagens/Aula6-Criando-Pritunl-21.png)
+
+Você terá uma tela como esta:
+
+![Aula6-Criando-Pritunl-22](imagens/Aula6-Criando-Pritunl-22.png)
+
+Agora vamos na opção Servers, depois na opção Add Server, como abaixo:
+
+![Aula6-Criando-Pritunl-23](imagens/Aula6-Criando-Pritunl-23.png)
+
+![Aula6-Criando-Pritunl-24](imagens/Aula6-Criando-Pritunl-24.png)
+
+Agora colocamos um nome para nosso servidor VPN e clicamos em Add, como abaixo:
+
+![Aula6-Criando-Pritunl-25](imagens/Aula6-Criando-Pritunl-25.png)
+
+Irá aparecer uma tela como esta:
+
+![Aula6-Criando-Pritunl-26](imagens/Aula6-Criando-Pritunl-26.png)
+
+Agora precisamos anexar a organização que nos criamos anteriormente. Basta clicar em Attach Organization.
+
+![Aula6-Criando-Pritunl-27](imagens/Aula6-Criando-Pritunl-27.png)
+
+E novamente em Attach.
+
+![Aula6-Criando-Pritunl-28](imagens/Aula6-Criando-Pritunl-28.png)
+
+Agora clicamos em Start Server.
+
+![Aula6-Criando-Pritunl-29](imagens/Aula6-Criando-Pritunl-29.png)
+
+Irá aparecer uma tela como esta.
+
+![Aula6-Criando-Pritunl-30](imagens/Aula6-Criando-Pritunl-30.png)
+
+Entre no nosso servidor VPN pelo SSH, conforme anteriormente fizemos:
 
 ```console
-sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
-deb https://repo.pritunl.com/stable/apt buster main
-EOF
-
-sudo apt install dirmngr
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
-sudo apt update
-sudo apt install pritunl-client-electron
+ssh carlos@45.33.65.57
 ```
 
+E dê o seguinte comando:
 
+```console
+sudo ufw status
+```
 
-Ubuntu 23.04 Lunar
-sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
-deb https://repo.pritunl.com/stable/apt jammy main
-EOF
-sudo apt --assume-yes install gnupg
-gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 7568D9BB55FF9E5287D586017AE645C0CF8E292A
-gpg --armor --export 7568D9BB55FF9E5287D586017AE645C0CF8E292A | sudo tee /etc/apt/trusted.gpg.d/pritunl.asc
-sudo apt update
-sudo apt install pritunl-client-electron
+Deverá aparecer o seguinte:
 
+```console
+[sudo] password for carlos: 
+Status: active
 
-OU BAIXAR O PACOTE ADEQUADO PELO GITHUB
-wget https://objects.githubusercontent.com/github-production-release-asset-2e65be/35986723/3c84be85-f8e1-44d8-9b77-e20a0f19cd7a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230930%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230930T165822Z&X-Amz-Expires=300&X-Amz-Signature=6c7c969c79d60b0fa56e9a97f00f6c50685433efc1382bad1b85fe6f4338360e&X-Amz-SignedHeaders=host&actor_id=62070772&key_id=0&repo_id=35986723&response-content-disposition=attachment%3B%20filename%3Dpritunl-client-electron_1.3.3637.72-0debian1.bookworm_amd64.deb&response-content-type=application%2Foctet-stream
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere                  
+443                        ALLOW       Anywhere                  
+80                         ALLOW       Anywhere                  
+22/tcp (v6)                ALLOW       Anywhere (v6)             
+443 (v6)                   ALLOW       Anywhere (v6)             
+80 (v6)                    ALLOW       Anywhere (v6)
+```
 
+Observe que precisamos liberar a porta do nosso servidor para que ele funcione corretamente. Então vamos na tela anterior e pegamos a número da porta. No nosso caso é: 14458/udp.
 
-sudo pritunl setup-key
-gerou
-a9e1025aad374eb3919bd9894207812d
+![Aula6-Criando-Pritunl-31](imagens/Aula6-Criando-Pritunl-31.png)
 
+E daremos um comando no servidor para liberar esta porta.
 
-sudo pritunl default-password
-gerou
-Administrator default password:
-  username: "pritunl"
-  password: "IDc5GcNXFPNM"
+```console
+sudo ufw allow 14458/udp
+```
 
+Irá aparecer:
+
+```console
+Rule added
+Rule added (v6)
+```
+
+Podemos conferir as portas que estão abertas.
+
+```console
+sudo ufw status
+```
+
+E iremos obter:
+
+```console
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere                  
+443                        ALLOW       Anywhere                  
+80                         ALLOW       Anywhere                  
+14458/udp                  ALLOW       Anywhere                  
+22/tcp (v6)                ALLOW       Anywhere (v6)             
+443 (v6)                   ALLOW       Anywhere (v6)             
+80 (v6)                    ALLOW       Anywhere (v6)             
+14458/udp (v6)             ALLOW       Anywhere (v6)
+```
+
+Agora já podemos sair do acesso SSH com exit.
+
+```console
+exit
+```
+
+Clique novamente em Users.
+
+![Aula6-Criando-Pritunl-32](imagens/Aula6-Criando-Pritunl-32.png)
+
+Clique no ícone do clipes, conforme abaixo para obter o profile temporário de acesso que utilizaremos em nosso Pritunl Client.
+
+![Aula6-Criando-Pritunl-33](imagens/Aula6-Criando-Pritunl-33.png)
+
+Vamos obter o seguinte:
+
+![Aula6-Criando-Pritunl-34](imagens/Aula6-Criando-Pritunl-34.png)
+
+Na última informação podemos copiar este dado para incluir em nosso Pritunl Client, como abaixo:
+
+Abra o Pritunl Client e clique em Import, conforme abaixo:
+
+![Aula6-Criando-Pritunl-35](imagens/Aula6-Criando-Pritunl-35.png)
+
+Em seguida cole a última informação de profile e clique em Import.
+
+![Aula6-Criando-Pritunl-36](imagens/Aula6-Criando-Pritunl-36.png)
+
+Agora clique em Connect.
+
+![Aula6-Criando-Pritunl-37](imagens/Aula6-Criando-Pritunl-37.png)
+
+Coloque o número do PIN que criamos anteriormente e clique novamente em Connect.
+
+![Aula6-Criando-Pritunl-38](imagens/Aula6-Criando-Pritunl-38.png)
+
+Você terá a seguinte tela:
+
+![Aula6-Criando-Pritunl-39](imagens/Aula6-Criando-Pritunl-39.png)
+
+A partir de agora está utilizando uma VPN. Pode verificar seu IP antes de conectar na VPN e verificar novamente depois que estiver usando sua VPN.
+
+Segue uma tela usando a VPN:
+
+![Aula6-Criando-Pritunl-40](imagens/Aula6-Criando-Pritunl-40.png)
+
+Segue uma tela sem usar a VPN:
+
+![Aula6-Criando-Pritunl-41](imagens/Aula6-Criando-Pritunl-41.png)
+
+Também é possível clicar no ícone de download para baixar uma arquivo profile. O ícone está ao lado direito do ícone do clipes. Trata-se de um arquivo zip que contém um arquivo ovpn para utilizar em sua rede caso queira.
+
+# FIM
