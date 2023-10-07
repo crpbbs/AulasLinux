@@ -96,7 +96,7 @@ O Debian 12 Bookwork mais recente vem com pacotes PHP 8.2 por padrão, que é a 
 Execute o comando apt install abaixo para instalar pacotes PHP em seu sistema Debian. O comando instalará o PHP e algumas extensões necessárias ao Nextcloud, como GD, MySQL, Imagick, pear e apcu. Verifique a página de requisitos do servidor Nextcloud para obter a lista completa de pacotes que você precisa.
 
 ```console
-sudo apt install -y php php-curl php-cli php-mysql php-gd php-common php-xml php-json php-intl php-pear php-imagick php-dev php-common php-mbstring php-zip php-soap php-bz2 php-bcmath php-gmp php-apcu libmagickcore-dev
+sudo apt install php php-curl php-cli php-mysql php-gd php-common php-xml php-json php-intl php-pear php-imagick php-dev php-common php-mbstring php-zip php-soap php-bz2 php-bcmath php-gmp php-apcu libmagickcore-dev
 ```
 
 Insira y para confirmar a instalação e pressione ENTER para continuar.
@@ -331,7 +331,7 @@ Neste ponto, todos os pacotes de software para executar o Nextcloud estão insta
 Antes de baixar o código-fonte do Nextcloud, execute o comando apt install abaixo para instalar o curl e descompactar.
 
 ```console
-sudo apt install curl unzip -y
+sudo apt install curl unzip
 ```
 
 ![Imagem mostrando a instalação do curl e do unzip](imagens/Aula7-NextCloud-12.png)
