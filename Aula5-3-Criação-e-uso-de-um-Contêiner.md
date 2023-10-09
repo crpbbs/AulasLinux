@@ -1,4 +1,4 @@
-# Criação e uso do Docker
+# Criação e uso de um Contêiner
 
 No restante deste guia, você trabalhará com um gerenciador de lista de tarefas simples executado em Node.js. Se você não está familiarizado com o Node.js, não se preocupe. Este guia não requer nenhuma experiência anterior com JavaScript.
 
@@ -101,7 +101,7 @@ Finalmente, a opão -t marca sua imagem. Pense nisso como um nome legível para 
 
 O ponto final no comando docker build informa ao Docker que ele deve procurar Dockerfile no diretório atual.
 
-## Iniciar um contêiner de aplicativo
+## Iniciar um contêiner do aplicativo que você criou.
 
 Agora que você tem uma imagem, pode executar o aplicativo em um contêiner usando o comando docker run.
 
