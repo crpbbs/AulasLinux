@@ -44,13 +44,3 @@
 
 [!SUCCESS] TESTE COM O SUCCESS
 
-- [ ] foo
-- [x] bar
-
-[Usar Docker Compose][bar]
-
-[bar]: /url "Usar Docker Compose"
-
-<p><a href="/url" title="Usar Docker Compose">Usar Docker Compose</a></p>
-
-
