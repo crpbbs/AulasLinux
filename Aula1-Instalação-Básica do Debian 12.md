@@ -20,20 +20,20 @@ Aproveite e se inscreva no canal para receber novas aulas.
 
 Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do Debian 12.
 
-* 1 Mão na massa
+1. Mão na massa
 
-    Nosso propósito é realizar uma instalação limpa e vazia do Debian, sem desktop, sem praticamente todos os aplicativos que viriam numa instalação full.
+   Nosso propósito é realizar uma instalação limpa e vazia do Debian, sem desktop, sem praticamente todos os aplicativos que viriam numa instalação full.
 
-    Vamos fazer passo a passo a instalação e posteriormente em aulas futuras iremos instalar um desktop enxuto, além disso, iremos instalar somente os aplicativos que iremos utilizar, sem outros componentes desnecessários que são instalados numa instalação full.
+   Vamos fazer passo a passo a instalação e posteriormente em aulas futuras iremos instalar um desktop enxuto, além disso, iremos instalar somente os aplicativos que iremos utilizar, sem outros componentes desnecessários que são instalados numa instalação full.
 
-    Vamos utilizar um HD vazio.
+   Vamos utilizar um HD vazio.
 
-    Para esta primeira aula iremos instalar o Debian num HD de 40 GB. Deixaremos 512 MB para o BOOT; 20 GB para a partição RAIZ; 18 para a partição HOME e 2 GB para área de SWAP.
+   Para esta primeira aula iremos instalar o Debian num HD de 40 GB. Deixaremos 512 MB para o BOOT; 20 GB para a partição RAIZ; 18 para a partição HOME e 2 GB para área de SWAP.
 
-* 2 Boot pelo Pen-Drive ou CD com a imagem do Debian 12
+2. Boot pelo Pen-Drive ou CD com a imagem do Debian 12
 
+    ```console
     Advanced Options
-
         Expert Install
             Choose Language = Português do Brasil
                 Localidade = Brasil
@@ -152,8 +152,9 @@ Hoje vou apresentar um vídeo que fiz para servir de tutorial na instalação do
             Finalizar a instalação
                 O relógio do sistema está configurado para UTC ? <Sim>
                 Por favor, escolha continuar para reinicializar o computador <Continuar>
+    ```
 
-* 3 Primeiro boot no novo sistema já instalado
+3. Primeiro boot no novo sistema já instalado
 
     Entrar com seu usuário normal e tentar fazer um apt update
 

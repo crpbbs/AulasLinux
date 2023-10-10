@@ -24,13 +24,13 @@ Existem duas maneiras de colocar um contêiner em uma rede:
 
 Nas etapas a seguir, você criará a rede primeiro e depois anexará o contêiner MySQL na inicialização.
 
-* Crie a rede.
+1. Crie a rede.
 
     ```console
     docker network create todo-app
     ```
 
-* Inicie um contêiner MySQL e conecte-o à rede. Você também definirá algumas variáveis ​​de ambiente que o banco de dados usará para inicializar o banco de dados. Para saber mais sobre as variáveis ​​de ambiente do MySQL, consulte a seção ["Variáveis ​​de ambiente" na listagem do MySQL Docker Hub](https://hub.docker.com/_/mysql/?_gl=1*1t479ve*_ga*MTg3NDE2MDQ0Ni4xNjkyNTY5OTM5*_ga_XJWPQMJYHQ*MTY5NjgwMzY3My4yNS4xLjE2OTY4MDU4ODIuNTkuMC4w).
+2. Inicie um contêiner MySQL e conecte-o à rede. Você também definirá algumas variáveis ​​de ambiente que o banco de dados usará para inicializar o banco de dados. Para saber mais sobre as variáveis ​​de ambiente do MySQL, consulte a seção ["Variáveis ​​de ambiente" na listagem do MySQL Docker Hub](https://hub.docker.com/_/mysql/?_gl=1*1t479ve*_ga*MTg3NDE2MDQ0Ni4xNjkyNTY5OTM5*_ga_XJWPQMJYHQ*MTY5NjgwMzY3My4yNS4xLjE2OTY4MDU4ODIuNTkuMC4w).
 
     ```console
     docker run -d \
@@ -47,7 +47,7 @@ Nas etapas a seguir, você criará a rede primeiro e depois anexará o contêine
     >
     >Você notará um volume nomeado no comando acima como todo-mysql-data que está montado em /var/lib/mysql, que é onde o MySQL armazena seus dados. No entanto, você nunca executou um comando docker volume create. O Docker reconhece que você deseja usar um volume nomeado e cria um automaticamente para você.
 
-* Para confirmar se o banco de dados está instalado e funcionando, conecte-se ao banco de dados e verifique se ele se conecta.
+3. Para confirmar se o banco de dados está instalado e funcionando, conecte-se ao banco de dados e verifique se ele se conecta.
 
     ```console
     docker exec -it <mysql-container-id> mysql -u root -p

@@ -175,13 +175,15 @@ Desinstalando **Oh My Zsh**
 
 Oh My Zsh não é para todos. Sentiremos sua falta, mas queremos tornar esta separação fácil.
 
-Se você deseja desinstalar oh-my-zsh, basta executar **uninstall_oh_my_zsha** a partir da linha de comando. Ele se removerá e reverterá sua configuração bash anterior ao zsh.
-
-### Faça isso somente se quiser o bash de volta.
-
-```console
-uninstall_oh_my_zsha
-```
+>[!CAUTION]
+>
+>Se você deseja desinstalar oh-my-zsh, basta executar **uninstall_oh_my_zsha** a partir da linha de comando. Ele se removerá e reverterá sua configuração bash anterior ao zsh.
+>
+> **Faça isso somente se quiser o bash de volta.**
+>
+>```console
+>uninstall_oh_my_zsha
+>```
 
 O **Neofetch** é um utilitário de linha de comando para exibir informações do sistema em sistemas operacionais baseados em Unix, como Linux. Ele exibe informações como distribuição do sistema operacional, versão do kernel, ambiente de desktop, informações da CPU, quantidade de memória, informações da placa gráfica, entre outros. **Neofetch** é altamente personalizável e pode ser configurado para exibir apenas as informações desejadas. Ele também suporta temas e permite que os usuários personalizem a aparência das informações exibidas.
 
