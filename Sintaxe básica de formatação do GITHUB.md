@@ -36,13 +36,50 @@ Você pode indicar ênfase com texto em negrito, itálico, tachado, subscrito ou
 
 ## Texto de referência
 
-Você pode citar um texto com >.
+Você pode citar um texto com ```>```.
 
 Texto que não é uma citação
 
 > Texto que é uma citação
 
 O texto citado é recuado, com uma cor de tipo diferente.
+
+## Citar código
+
+Você pode chamar código ou um comando em uma frase com aspas simples. O texto entre as aspas não será formatado. Você também pode pressionar o atalho de teclado Comando+E (Mac) ou Ctrl+E (Windows/Linux) para inserir os acentos graves para um bloco de código dentro de uma linha de Markdown.
+
+Use `git status` para listar todos os arquivos novos ou modificados que ainda não foram confirmados.
+
+Para formatar código ou texto no próprio bloco distinto, use aspas triplas.
+
+Alguns comandos básicos do Git são:
+
+```
+git status
+git add
+git commit
+``
+
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
+
+## Modelos de cores com suporte
+
+Em problemas, solicitações de pull e discussões, você pode chamar cores dentro de uma frase usando aspas invertidas. Um modelo de cor com suporte em aspas invertidas exibirá uma visualização da cor.
+
+A cor de fundo é `#ffffff` para o modo claro e `#000000` para o modo escuro.
+
+Veja abaixo os modelos de cores com suporte no momento.
+
+
+| Cor | Sintaxe | Exemplo | Saída |
+|-----|---------|---------|-------|
+| HEX | `#RRGGBB` | `#0969DA` | #0969DA |
+| RGB | `rgb(R,G,B)` | `rgb(9, 105, 218)` | RGB 9, 105 e 218 |
+| HSL | `hsl(H,S,L)` | `hsl(212, 92%, 45%)` | HSL 212, 92% e 45% |
 
 >[!NOTE]
 >TESTE COM NOTE
