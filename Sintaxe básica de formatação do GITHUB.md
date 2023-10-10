@@ -11,8 +11,38 @@ Para criar um título, adicione de um a seis símbolos # antes do texto do títu
 ## Nível 2
 ### Nível 3
 
-Quando você usa dois ou mais cabeçalhos, o GitHub gera automaticamente um sumário que pode ser acessado clicando em  no cabeçalho do arquivo. Cada título do cabeçalho está listado na tabela de conteúdo e você pode clicar em um título para acessar a seção selecionada.
+Quando você usa dois ou mais cabeçalhos, o GitHub gera automaticamente um sumário que pode ser acessado clicando no cabeçalho do arquivo. Cada título do cabeçalho está listado na tabela de conteúdo e você pode clicar em um título para acessar a seção selecionada.
 
+Para ver o sumário clique onde está apontando o ponteiro do mouse na imagem abaixo no seu GITHUB.
+
+![Sintaxe-formatacao-01.png](imagens/Sintaxe-formatacao-01.png)
+
+![Sintaxe-formatacao-02.png](imagens/Sintaxe-formatacao-02.png)
+
+## Estilo do texto
+
+Você pode indicar ênfase com texto em negrito, itálico, tachado, subscrito ou sobrescrito em campos de comentários e arquivos .md.
+
+
+| Estilo | Sintaxe | Atalho do teclado | Exemplo |
+|--------|---------|-------------------|---------|
+| Negrito | ```** ** ou __ __```	| Comando+B (Mac) ou CTRL+B (Windows/Linux) | **Este texto está em negrito** |
+| Itálico | ```* * ou _ _```  | Comando+I (Mac) ou CTRL+I (Windows/Linux) | _Este texto está em itálico_ |
+| Tachado | ```~~ ~~``` | Nenhum | ~~Este texto está tachado~~ |
+| Negrito e itálico aninhado | ```** ** e _ _``` | Nenhum | **Este texto está em negrito e _itálico no final_** |
+| Todo em negrito e itálico | ```*** ***``` | Nenhum | ***Texto todo em negrito e itálico*** |
+| Subscrito | ```<sub> </sub>``` | Nenhum | Isto está <sub>subscrito</sub> |
+| Sobrescrito | ```<sup> </sup>``` |Nenhum | Isto está <sup>sobrescrito</sup> |
+
+## Texto de referência
+
+Você pode citar um texto com >.
+
+Texto que não é uma citação
+
+> Texto que é uma citação
+
+O texto citado é recuado, com uma cor de tipo diferente.
 
 >[!NOTE]
 >TESTE COM NOTE
@@ -27,7 +57,7 @@ Quando você usa dois ou mais cabeçalhos, o GitHub gera automaticamente um sum�
 <summary>My top languages</summary>
 
 | Rank | Languages |
-|-----:|-----------|
+|------|-----------|
 |     1| Javascript|
 |     2| Python    |
 |     3| SQL       |
