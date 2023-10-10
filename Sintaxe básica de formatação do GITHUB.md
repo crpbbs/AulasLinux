@@ -77,9 +77,9 @@ Veja abaixo os modelos de cores com suporte no momento.
 
 | Cor | Sintaxe | Exemplo | Saída |
 |-----|---------|---------|-------|
-| HEX | `#RRGGBB` | `#0969DA` | #0969DA |
-| RGB | `rgb(R,G,B)` | `rgb(9, 105, 218)` | RGB 9, 105 e 218 |
-| HSL | `hsl(H,S,L)` | `hsl(212, 92%, 45%)` | HSL 212, 92% e 45% |
+| HEX | `#RRGGBB` | `#0969DA` | `#0969DA#0969DA` |
+| RGB | `rgb(R,G,B)` | `rgb(9, 105, 218)` | `rgb(9, 105, 218)RGB 9, 105 e 218` |
+| HSL | `hsl(H,S,L)` | `hsl(212, 92%, 45%)` | `hsl(212, 92%, 45%)HSL 212, 92% e 45%` |
 
 >[!NOTE]
 >TESTE COM NOTE
