@@ -22,3 +22,14 @@ Alguns dizeres para começar.
 
 </details>
 
+`#0969DA` Cor
+
+`rgb(9, 105, 218)` Cor
+
+`hsl(212, 92%, 45%)` Cor
+
+[Usar Docker Compose](https://github.com/crpbbs/AulasLinux/blob/main/Aula5-9-Usar%20Docker%20Compose.md#usar-docker-compose)
+
+- [x] #739
+- [ ] https://github.com/octo-org/octo-repo/issues/740
+- [ ] Add delight to the experience when all tasks are complete :tada:
