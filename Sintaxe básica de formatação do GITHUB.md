@@ -77,9 +77,35 @@ Veja abaixo os modelos de cores com suporte no momento.
 
 | Cor | Sintaxe | Exemplo | Saída |
 |-----|---------|---------|-------|
-| HEX | `#RRGGBB` | `#0969DA` | `#0969DA#0969DA` |
-| RGB | `rgb(R,G,B)` | `rgb(9, 105, 218)` | `rgb(9, 105, 218)RGB 9, 105 e 218` |
-| HSL | `hsl(H,S,L)` | `hsl(212, 92%, 45%)` | `hsl(212, 92%, 45%)HSL 212, 92% e 45%` |
+| HEX | `#RRGGBB` | `#0969DA` | ![Sintaxe-formatacao-03.webp](imagens/Sintaxe-formatacao-03.webp) |
+| RGB | `rgb(R,G,B)` | `rgb(9, 105, 218)` | ![Sintaxe-formatacao-03.webp](imagens/Sintaxe-formatacao-04.webp) |
+| HSL | `hsl(H,S,L)` | `hsl(212, 92%, 45%)` | ![Sintaxe-formatacao-03.webp](imagens/Sintaxe-formatacao-05.webp) |
+
+>[!NOTE]
+>
+>Um modelo de cor com suporte não pode ter espaços à esquerda ou à direita dentro das aspas invertidas.
+A visualização da cor só tem suporte em problemas, solicitações de pull e discussões.
+
+## Ligações
+
+Você pode criar um link embutido colocando o texto do link entre colchetes [ ] e colocando a URL entre parênteses ( ). Também é possível usar o atalho de teclado Command+K para criar um link. Quando você tiver o texto selecionado, poderá colar uma URL da área de transferência para criar automaticamente um link por meio da seleção.
+
+Você também pode criar um hiperlink Markdown realçando o texto e usando o atalho de teclado Command+V. Para substituir o texto pelo link, use o atalho de teclado Command+Shift+V.
+
+Este site foi construído usando [páginas do GitHub](https://pages.github.com/).
+
+## Links de seção
+
+Você pode vincular diretamente a uma seção de um arquivo interpretado, passando o mouse sobre o título da seção para expor o ![Sintaxe-formatacao-03.webp](imagens/icone-hiperlink.png).
+
+## Links relativos
+
+É possível definir links relativos e caminhos de imagens em seus arquivos representados para ajudar os leitores a acessar outros arquivos no repositório.
+
+Um link relativo é um link que é relativo ao arquivo atual. Por exemplo, se você tiver um arquivo LEIAME na raiz do repositório e tiver outro arquivo em AulasLinux/Aula5-1-Instalação-e-Configuração-Docker-Engine.md, o link relativo para esta aula fica:
+
+[Aula5-1-Instalação-e-Configuração-Docker-Engine](AulasLinux/Aula5-1-Instalação-e-Configuração-Docker-Engine.md)
+
 
 >[!NOTE]
 >TESTE COM NOTE
