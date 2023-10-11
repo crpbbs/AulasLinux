@@ -162,5 +162,5 @@ Para criar uma lista de tarefas, coloque um hífen e um espaço seguidos de [ ] 
 
 - [x] #739 :+1:
 - [ ] https://github.com/octo-org/octo-repo/issues/740 :shipit:
-- [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas :tada:
+- [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas :grin:
 
