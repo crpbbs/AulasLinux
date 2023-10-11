@@ -98,14 +98,31 @@ Este site foi construído usando [páginas do GitHub](https://pages.github.com/)
 
 Você pode vincular diretamente a uma seção de um arquivo interpretado, passando o mouse sobre o título da seção para expor o ![Sintaxe-formatacao-03.webp](imagens/icone-hiperlink.png).
 
-## Links relativos
+## Imagens
 
-É possível definir links relativos e caminhos de imagens em seus arquivos representados para ajudar os leitores a acessar outros arquivos no repositório.
+Você pode exibir uma imagem adicionando ! e colocando o texto curto entre [ ], o texto não é mostrado. O texto alternativo é um texto curto equivalente às informações da imagem. Em seguida, coloque o link da imagem entre parênteses ().
 
-Um link relativo é um link que é relativo ao arquivo atual. Por exemplo, se você tiver um arquivo LEIAME na raiz do repositório e tiver outro arquivo em AulasLinux/Aula5-1-Instalação-e-Configuração-Docker-Engine.md, o link relativo para esta aula fica:
+![Captura de tela de um comentário sobre um problema do GitHub mostrando uma imagem, adicionada no Markdown, de um Octocat sorrindo e levantando um tentáculo.](https://myoctocat.com/assets/images/base-octocat.svg)
 
-[Aula5-1-Instalação-e-Configuração-Docker-Engine](AulasLinux/Aula5-1-Instalação-e-Configuração-Docker-Engine.md)
+## Especificando o tema para o qual uma imagem será exibida
 
+Você pode especificar o tema para o qual uma imagem é exibida no Markdown usando o elemento HTML <picture> em combinação com o recurso de mídia prefers-color-scheme. Nós distinguimos entre os modos de cores claro e escuro. Portanto, há duas opções disponíveis. Você pode usar essas opções para exibir imagens otimizadas para fundos escuros ou claros. Isso é particularmente útil para imagens PNG transparentes.
+
+Por exemplo, o seguinte código exibe uma imagem de sol para temas claros e uma lua para temas escuros:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+</picture>
+
+## Alertas
+
+Os alertas são uma extensão da sintaxe blockquote que você pode usar para enfatizar informações críticas. Em GitHub, eles são exibidos com cores e ícones distintos para indicar a importância do conteúdo.
+
+Recomendamos restringir o uso de alertas a um ou dois por artigo para evitar sobrecarregar o leitor. As anotações consecutivas devem ser evitadas.
+
+Há três tipos de alertas disponíveis. Você pode adicionar um alerta com uma linha de blockquote especial que especifica o tipo de alerta e, em seguida, adicionar as informações de alerta em um blockquote padrão imediatamente depois.
 
 >[!NOTE]
 >TESTE COM NOTE
@@ -116,10 +133,22 @@ Um link relativo é um link que é relativo ao arquivo atual. Por exemplo, se vo
 >[!WARNING]
 >TESTE COM O WARNING
 
-<details>
-<summary>My top languages</summary>
+##Tabelas
 
-| Rank | Languages |
+Tabela simples.
+
+| Colocação | Linguagem |
+|-----------|-----------|
+| 1 | Javascript |
+| 2 | Python |
+| 3 | SQL |
+
+Tabela que abre e fecha.
+
+<details>
+<summary>Minhas melhores linguagens</summary>
+
+| Colocação | Linguagem |
 |------|-----------|
 |     1| Javascript|
 |     2| Python    |
@@ -127,14 +156,11 @@ Um link relativo é um link que é relativo ao arquivo atual. Por exemplo, se vo
 
 </details>
 
-`#0969DA` Cor
+## Listas de tarefas
 
-`rgb(9, 105, 218)` Cor
+Para criar uma lista de tarefas, coloque um hífen e um espaço seguidos de [ ] antes dos itens de lista. Para marcar uma tarefa como concluída, use [x].
 
-`hsl(212, 92%, 45%)` Cor
+- [x] #739 :+1:
+- [ ] https://github.com/octo-org/octo-repo/issues/740 :shipit:
+- [ ] Adicione prazer à experiência quando todas as tarefas forem concluídas :tada:
 
-[Usar Docker Compose](https://github.com/crpbbs/AulasLinux/blob/main/Aula5-9-Usar%20Docker%20Compose.md#usar-docker-compose)
-
-- [x] #739
-- [ ] https://github.com/octo-org/octo-repo/issues/740
-- [ ] Add delight to the experience when all tasks are complete :tada:
