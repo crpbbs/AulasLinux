@@ -180,7 +180,7 @@ O script pós-instalação:
 
 * Define a capacidade do binário do Docker Desktop para mapear portas privilegiadas e definir limites de recursos.
 * Adiciona um nome DNS para Kubernetes ao /etc/hosts.
-* Cria um link simbólico de /usr/local/bin/com.docker.clipara /usr/bin/docker. Isso ocorre porque a CLI clássica do Docker está instalada em /usr/bin/docker. O instalador do Docker Desktop também instala um binário Docker CLI que inclui recursos de integração em nuvem e é essencialmente um wrapper para o Compose CLI, em /usr/local/bin/com.docker.cli. O link simbólico garante que o wrapper possa acessar a CLI clássica do Docker.
+* Cria um link simbólico de /usr/local/bin/com.docker.cli para /usr/bin/docker. Isso ocorre porque a CLI clássica do Docker está instalada em /usr/bin/docker. O instalador do Docker Desktop também instala um binário Docker CLI que inclui recursos de integração em nuvem e é essencialmente um wrapper para o Compose CLI, em /usr/local/bin/com.docker.cli. O link simbólico garante que o wrapper possa acessar a CLI clássica do Docker.
 
 ## Inicie o Docker Desktop
 
@@ -191,6 +191,7 @@ Alternativamente, abra um terminal e execute:
 ```console
 sudo systemctl --user start docker-desktop
 ```
+
 Quando o Docker Desktop é iniciado, ele cria um contexto dedicado que a CLI do Docker pode usar como destino e o define como o contexto atual em uso. Isso evita conflito com um Docker Engine local que pode estar em execução no host Linux e usando o contexto padrão. Ao desligar, o Docker Desktop redefine o contexto atual para o anterior.
 
 O instalador do Docker Desktop atualiza o Docker Compose e os binários da CLI do Docker no host. Ele instala o Docker Compose V2 e oferece aos usuários a opção de vinculá-lo como docker-compose no painel Configurações. O Docker Desktop instala o novo binário Docker CLI que inclui recursos de integração em nuvem /usr/local/bin/com.docker.cli e cria um link simbólico para o Docker CLI clássico em /usr/local/bin.
@@ -199,18 +200,17 @@ Depois de instalar o Docker Desktop com sucesso, você pode verificar as versõe
 
 ```console
 docker compose version
-Docker Compose version v2.17.3
-
 docker --version
-Docker version 23.0.5, build bc4487a
-
 docker version
-Client: Docker Engine - Community
- Cloud integration: v1.0.31
- Version:           23.0.5
- API version:       1.42
-<...>
 ```
+
+Você terá algo parecido com isso:
+
+![Aula5-11-Docker-47.png](imagens/Aula5-11-Docker-47.png)
+
+Entre no aplicativo criado pelo Menu->Desenvolvimento->Docker Desktop. Faça login no docker desktop. Caso não tenha login criado utilize a opção Sign up, caso já tenha login utilize a opção Sign in, ou clique em Continue without sigining in (Continuar sem fazer login).
+
+![Aula5-11-Docker-46.png](imagens/Aula5-11-Docker-46.png)
 
 Para permitir que o Docker Desktop seja iniciado no login, no menu Docker, selecione Configurações > Geral > Iniciar Docker Desktop ao fazer login .
 
