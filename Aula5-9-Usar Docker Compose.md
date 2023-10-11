@@ -1,2 +1,0 @@
-# Usar Docker Compose
-
