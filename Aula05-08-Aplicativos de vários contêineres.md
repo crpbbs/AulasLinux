@@ -43,7 +43,7 @@ Nas etapas a seguir, você criará a rede primeiro e depois anexará o contêine
 
     No comando anterior, você pode ver a opção --network-alias. Em uma seção posterior, você aprenderá mais sobre essa opção.
 
-    >[!TIP]
+    >[!NOTE]
     >
     >Você notará um volume nomeado no comando acima como todo-mysql-data que está montado em /var/lib/mysql, que é onde o MySQL armazena seus dados. No entanto, você nunca executou um comando docker volume create. O Docker reconhece que você deseja usar um volume nomeado e cria um automaticamente para você.
 
