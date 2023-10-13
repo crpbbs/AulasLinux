@@ -159,10 +159,13 @@ O aplicativo de tarefas suporta a configuração de algumas variáveis ​​de 
 
 Agora você pode iniciar seu contêiner pronto para desenvolvimento.
 
-1. Se você estiver com seu contêiner em execução, pare ele e remova para iniciarmos juntos novamente. Lembrando os comandos para para e depois remover.
+1. Se você estiver com seu contêiner em execução, pare ele e remova para iniciarmos juntos novamente. Lembrando os comandos para parar ou remover forçando a parada.
 
     ```console
     docker stop <CONTAINER ID>
+    ```
+
+    ```console
     docker rm -f <CONTAINER ID>
     ```
 

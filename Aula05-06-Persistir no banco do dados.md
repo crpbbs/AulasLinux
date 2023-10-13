@@ -109,6 +109,13 @@ Você pode criar o volume e iniciar o contêiner usando a CLI ou a interface gr�
     docker rmi <IMAGE ID>
     ```
 
+    Pode-se fazer também a remoção de todos os contêiners de uma vez e de todas as imagens de uma vez, com os comandos abaixo:
+
+    ```console
+    docker rm -f $(docker ps -aq) #Para todos os contêiners e remove
+    docker rmi $(docker images -q) #Remove todas as imagens
+    ```
+
 Agora você aprendeu como persistir dados.
 
 ### Mergulhe no volume

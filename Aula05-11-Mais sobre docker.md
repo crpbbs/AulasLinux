@@ -103,5 +103,10 @@ docker pull fedora
 
     ```console
     docker run -it figlet
+    ```
+    
+    Estando dentro do fedora vamos executar nossa aplicação.
+
+    ```console
     figlet teste
     ```
