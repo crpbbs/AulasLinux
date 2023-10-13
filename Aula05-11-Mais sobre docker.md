@@ -81,7 +81,7 @@ docker pull fedora
 12. Crie o diretório ~/Documentos/Docker/figlet e entre nele e inclua uma arquivo chamado Dockerfile com o seguinte conteúdo:
 
     ```console
-    mkdir ~/Documentos/Docker/figlet
+    mkdir -pv ~/Documentos/Docker/figlet
     cd ~/Documentos/Docker/figlet
     vi Dockerfile
     ```
