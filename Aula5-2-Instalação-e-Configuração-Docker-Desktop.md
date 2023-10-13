@@ -182,6 +182,101 @@ O script pós-instalação:
 * Adiciona um nome DNS para Kubernetes ao /etc/hosts.
 * Cria um link simbólico de /usr/local/bin/com.docker.cli para /usr/bin/docker. Isso ocorre porque a CLI clássica do Docker está instalada em /usr/bin/docker. O instalador do Docker Desktop também instala um binário Docker CLI que inclui recursos de integração em nuvem e é essencialmente um wrapper para o Compose CLI, em /usr/local/bin/com.docker.cli. O link simbólico garante que o wrapper possa acessar a CLI clássica do Docker.
 
+## Antes de iniciar o Docker Desktop
+
+### Faça login no Docker Desktop
+
+Docker recomenda que você autentique usando a opção Sign in no canto superior direito do Docker Dashboard.
+
+Uma vez conectado, você pode acessar os repositórios do Docker Hub diretamente do Docker Desktop.
+
+Os usuários autenticados também obtêm um limite de taxa de pull mais alto em comparação aos usuários anônimos. Por exemplo, se você estiver autenticado, receberá 200 pulls por período de 6 horas, em comparação com 100 pulls por período de 6 horas por endereço IP para usuários anônimos. Para obter mais informações, consulte [Limite de taxa de download](https://docs.docker.com/docker-hub/download-rate-limit/).
+
+Em grandes empresas onde o acesso administrativo é restrito, os administradores podem [configurar o registro.json para impor a entrada](https://docs.docker.com/docker-hub/configure-sign-in/). Forçar a autenticação dos desenvolvedores por meio do Docker Desktop também permite que os administradores melhorem a postura de segurança de sua organização para o desenvolvimento em contêineres, aproveitando as vantagens do [Hardened Desktop](https://docs.docker.com/desktop/hardened-desktop/).
+
+>[!IMPORTANT]
+>
+>O Docker Desktop desconecta você automaticamente após 90 dias ou 30 dias de inatividade.
+
+### Gerenciamento de credenciais para usuários Linux
+
+Docker Desktop depende de pass para armazenar credenciais em arquivos criptografados por gpg2. Antes de fazer login no Docker Hub a partir do Docker Dashboard ou do menu Docker, você deve inicializar o pass. Docker Desktop exibe um aviso se você não tiver inicializado o pass.
+
+Você pode inicializar o pass usando uma chave gpg. Para gerar uma chave gpg, execute:
+
+```console
+gpg --generate-key
+```
+
+A seguir está um exemplo semelhante ao que você vê ao executar o comando anterior:
+
+![Aula5-11-Docker-48.png](imagens/Aula5-11-Docker-48.png)
+
+![Aula5-11-Docker-49.png](imagens/Aula5-11-Docker-49.png)
+
+![Aula5-11-Docker-50.png](imagens/Aula5-11-Docker-50.png)
+
+```
+gpg (GnuPG) 2.2.40; Copyright (C) 2022 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Note: Use "gpg --full-generate-key" for a full featured key generation dialog.
+
+GnuPG needs to construct a user ID to identify your key.
+
+Nome completo: Carlos Roberto Poletto
+Endereço de correio eletrónico: crpbbs@yahoo.com.br
+Você selecionou este identificador de utilizador:
+    "Carlos Roberto Poletto <crpbbs@yahoo.com.br>"
+
+Change (N)ame, (E)mail, or (O)kay/(Q)uit? O
+Precisamos gerar muitos bytes aleatórios. É uma boa ideia realizar outra
+actividade (escrever no teclado, mover o rato, usar os discos) durante a
+geração dos números primos; isso dá ao gerador de números aleatórios
+uma hipótese maior de ganhar entropia suficiente.
+gpg: /home/carlos/.gnupg/trustdb.gpg: base de dados de confiança criada
+gpg: directory '/home/carlos/.gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as '/home/carlos/.gnupg/openpgp-revocs.d/F2E6189B84BE9AD4DB5606F7D54A90AC3FFC0B46.rev'
+chaves pública e privada criadas e assinadas.
+
+pub   rsa3072 2023-10-11 [SC] [expires: 2025-10-10]
+      F2E6189B84BE9AD4DB5606F7D54A90AC3FFC0B46
+uid                      Carlos Roberto Poletto <crpbbs@yahoo.com.br>
+sub   rsa3072 2023-10-11 [E] [expires: 2025-10-10]
+```
+
+Para inicializar pass, execute o seguinte comando usando a chave pública gerada no comando anterior:
+
+```console
+pass init <your_generated_gpg-id_public_key>
+```
+
+No meu caso ficou assim:
+
+```console
+pass init F2E6189B84BE9AD4DB5606F7D54A90AC3FFC0B46
+```
+
+A seguir está um exemplo semelhante ao que você vê ao executar o comando anterior:
+
+```console
+mkdir: foi criado o diretório '/home/carlos/.password-store/'
+Password store initialized for F2E6189B84BE9AD4DB5606F7D54A90AC3FFC0B46
+```
+
+Depois de inicializar pass, você pode fazer login no Docker Dashboard e extrair suas imagens privadas. Quando o Docker CLI ou o Docker Desktop usam credenciais, um prompt do usuário pode aparecer solicitando a senha que você definiu durante a geração da chave gpg.
+
+```console
+docker pull molly/privateimage
+Using default tag: latest
+latest: Pulling from molly/privateimage
+3b9cc81c3203: Pull complete 
+Digest: sha256:3c6b73ce467f04d4897d7a7439782721fd28ec9bf62ea2ad9e81a5fb7fb3ff96
+Status: Downloaded newer image for molly/privateimage:latest
+docker.io/molly/privateimage:latest
+```
+
 ## Inicie o Docker Desktop
 
 Para iniciar o Docker Desktop para Linux, pesquise Docker Desktop no menu Aplicativos e abra-o. Isso inicia o ícone do menu Docker e abre o Docker Dashboard, relatando o status do Docker Desktop.
@@ -189,7 +284,14 @@ Para iniciar o Docker Desktop para Linux, pesquise Docker Desktop no menu Aplica
 Alternativamente, abra um terminal e execute:
 
 ```console
-sudo systemctl --user start docker-desktop
+systemctl --user start docker-desktop # Para iniciar
+systemctl --user enable docker-desktop # Para iniciar junto com o boot
+```
+
+Para parar use:
+
+```console
+systemctl --user stop docker-desktop # Para parar
 ```
 
 Quando o Docker Desktop é iniciado, ele cria um contexto dedicado que a CLI do Docker pode usar como destino e o define como o contexto atual em uso. Isso evita conflito com um Docker Engine local que pode estar em execução no host Linux e usando o contexto padrão. Ao desligar, o Docker Desktop redefine o contexto atual para o anterior.
@@ -210,6 +312,12 @@ Você terá algo parecido com isso:
 
 Entre no aplicativo criado pelo Menu->Desenvolvimento->Docker Desktop. Faça login no docker desktop. Caso não tenha login criado utilize a opção Sign up, caso já tenha login utilize a opção Sign in, ou clique em Continue without sigining in (Continuar sem fazer login).
 
+A primeira tela que aparece é esta:
+
+![Aula5-11-Docker-51.png](imagens/Aula5-11-Docker-51.png)
+
+Clque em Accept para aceitar os termos de subscrição.
+
 ![Aula5-11-Docker-46.png](imagens/Aula5-11-Docker-46.png)
 
 Para permitir que o Docker Desktop seja iniciado no login, no menu Docker, selecione Configurações > Geral > Iniciar Docker Desktop ao fazer login .
@@ -217,7 +325,7 @@ Para permitir que o Docker Desktop seja iniciado no login, no menu Docker, selec
 Alternativamente, abra um terminal e execute:
 
 ```console
-sudo systemctl --user enable docker-desktop
+systemctl --user enable docker-desktop
 ```
 
 Para interromper o Docker Desktop, selecione o ícone do menu Docker para abrir o menu Docker e selecione Quit Docker Desktop .
@@ -225,8 +333,20 @@ Para interromper o Docker Desktop, selecione o ícone do menu Docker para abrir 
 Alternativamente, abra um terminal e execute:
 
 ```console
-sudo systemctl --user stop docker-desktop
+ystemctl --user stop docker-desktop
 ```
+
+Como já tenho conta e já fiz minhas credeciais do pass, conecto através do Login in e a primeira tela que aparece é esta:
+
+![Aula5-11-Docker-52.png](imagens/Aula5-11-Docker-52.png)
+
+Neste primeiro login o sistema faz uma pesquisa. Responda conforme lhe agrade:
+
+Conte-nos sobre o trabalho que você faz. Isso nos ajuda a tornar o Docker melhor para pessoas como você.
+
+Este é o docker desktop em execução:
+
+![Aula5-11-Docker-53.png](imagens/Aula5-11-Docker-53.png)
 
 ## Atualizar o Docker Desktop
 

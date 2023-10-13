@@ -341,4 +341,10 @@ Obterá a seguinte tela:
 >docker rmi <ID>
 >```
 >
+>Caso queira eliminar todas as imagens que tenha instalado faça:
+>
+>```console
+>docker rmi $(docker images -q)
+>```
+>
 >Pronto, agora você eliminou tudo.
