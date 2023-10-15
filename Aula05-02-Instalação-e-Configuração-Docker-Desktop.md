@@ -333,7 +333,7 @@ Para interromper o Docker Desktop, selecione o ícone do menu Docker para abrir 
 Alternativamente, abra um terminal e execute:
 
 ```console
-ystemctl --user stop docker-desktop
+systemctl --user stop docker-desktop
 ```
 
 Como já tenho conta e já fiz minhas credeciais do pass, conecto através do Login in e a primeira tela que aparece é esta:
