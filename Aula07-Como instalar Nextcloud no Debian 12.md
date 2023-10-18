@@ -96,10 +96,11 @@ O Debian 12 Bookwork mais recente vem com pacotes PHP 8.2 por padrão, que é a 
 Execute o comando apt install abaixo para instalar pacotes PHP em seu sistema Debian. O comando instalará o PHP e algumas extensões necessárias ao Nextcloud, como GD, MySQL, Imagick, pear e apcu. Verifique a página de requisitos do servidor Nextcloud para obter a lista completa de pacotes que você precisa.
 
 ```console
-sudo apt install php php-curl php-cli php-mysql php-gd php-common php-xml php-json php-intl php-pear php-imagick php-dev php-common php-mbstring php-zip php-soap php-bz2 php-bcmath php-gmp php-apcu libmagickcore-dev
+sudo apt install php libapache2-mod-php libmagickcore-dev
+sudo apt install php-{common,mysql,xml,xmlrpc,curl,gd,imagick,cli,dev,imap,mbstring,opcache,soap,zip,intl,pear,gmp,bcmath,json,bz2,apcu}
 ```
 
-Insira y para confirmar a instalação e pressione ENTER para continuar.
+Insira y/s para confirmar a instalação e pressione ENTER para continuar.
 
 ![Imagem da instalação do php-8.2](imagens/Aula7-NextCloud-06.png)
 
