@@ -77,7 +77,8 @@ PHP (Hypertext Preprocessor) é uma linguagem de programação de código aberto
     Para instalação do PHP vou incluir algumas extensões que são as mais utilizada, mas se preferir você pode optar em não instalar, as necessárias são libapache2-mod-php php php-mysql php-cli.
 
     ```console
-    sudo apt install libapache2-mod-php php php-{common,mysql,xml,xmlrpc,curl,gd,imagick,cli,dev,imap,mbstring,opcache,soap,zip,intl,pear,gmp,bcmath}
+    sudo apt install php libapache2-mod-php libmagickcore-dev
+    sudo apt install php-{common,mysql,xml,xmlrpc,curl,gd,imagick,cli,dev,imap,mbstring,opcache,soap,zip,intl,pear,gmp,bcmath,json,bz2,apcu}
     ```
 
     É necessário reiniciar o apache para que o php tenha efeito.
