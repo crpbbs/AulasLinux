@@ -50,6 +50,12 @@ O Apache2 é um servidor web de código aberto e um dos servidores web mais popu
         </Directory>
     ```
 
+    Ou pode-se executar o comando abaixo para incluir o texto automaticamente:
+
+    ```console
+    sudo awk 'NR==14 {print "\tHeader always set Strict-Transport-Security \"max-age=63072000; includeSubDomains\"\n\n\t<Directory /var/www/html/>\n\t\tOptions FollowSymLinks\n\t\tAllowOverride All\n\t</Directory>\n"} 1' /etc/apache2/sites-enabled/000-default.conf.bak > /etc/apache2/sites-enabled/000-default.conf
+    ```
+
     A aparência deverá ser esta:
 
     ![Aula08-00-Server-Lamp-01.png](imagens/Aula08-00-Server-Lamp-01.png)
@@ -190,6 +196,10 @@ phpMyAdmin, por outro lado, é uma ferramenta de administração de banco de dad
     ```console
     > /root/.mysql_history
     exit
+    ```
+    Ou faça:
+    ```console
+    sudo truncate -s 0 /root/.mysql_history
     ```
 
 ## Vamos criptografar
