@@ -1,6 +1,8 @@
-# Como criar um Servidor WEB Apache2 + PHP 8.2 + MariaDB + Criptografar no Debian 12 Bookworm (LAMP)
+# Como criar um Servidor LAMP com PhpMyAdmin no Debian 12 Bookworm
 
 Apache, PHP e MySQL combinados criam uma pilha de desenvolvimento web básica, mas popular, conhecida como LAMP (Linux, Apache, MySQL, PHP). Essa pilha de código aberto é amplamente usada para construir aplicativos da web e sites baseados em PHP.
+
+O phpMyAdmin é uma ferramenta de software livre escrita em PHP, que permite a administração e gerenciamento de bancos de dados MySQL através de uma interface web. Ele fornece uma maneira fácil e conveniente de criar, editar, excluir e gerenciar bancos de dados, tabelas, colunas, registros e usuários.
 
 Acesse seu bash, e atualize seu repositório.
 
