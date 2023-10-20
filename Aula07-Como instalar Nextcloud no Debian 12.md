@@ -27,12 +27,20 @@ sudo apt upgrade
 Agora digite o seguinte comando apt install para instalar o servidor web Apache. Insira y para confirmar quando solicitado e pressione ENTER para prosseguir com a instalação.
 
 ```console
-sudo apt install apache2
+sudo apt install apache2 apache2-utils
 ```
 
 ![Imagem da instalação do apache2](imagens/Aula7-NextCloud-01.png)
 
-Após a instalação do Apache2, execute os comandos systemctl abaixo para verificar o status do serviço apche2.
+Após a instação, habilitamos o mod_rewrite do Apache que é muito utilizado. Este é um módulo que utiliza um mecanismo baseado em regras de reescrita. (phpipa, wordpress todos usam), e o mod_headers, este módulo fornece diretivas para controlar e modificar os cabeçalhos de solicitação e resposta HTTP. Comando para habilita-lo:
+
+```console
+sudo a2enmod rewrite
+sudo a2enmod headers
+sudo systemctl restart apache2
+```
+
+Agora execute os comandos systemctl abaixo para verificar o status do serviço apche2.
 
 ```console
 sudo systemctl is-enabled apache2
@@ -42,6 +50,41 @@ sudo systemctl status apache2
 A saída habilitada deve indicar que o serviço Apache2 será iniciado automaticamente na inicialização do sistema. E o status ativo (em execução) confirma que o serviço Apache2 está em execução.
 
 ![Imagem do apache2 em execução](imagens/Aula7-NextCloud-02.png)
+
+Já pode-se acessar no servidor apache pelo http://localhost ou http://nome_do_servidor_na_rede.
+
+![Imagem do apache2 em execução](imagens/Aula7-NextCloud-02b.png)
+
+A página que vimos ao abrir o ip do nosso servidor no navegador fica no diretório /var/www/html, isso está sendo informado no arquivo default do apache que fica em /etc/apache2/sites-enabled/000-default.conf, e para que nosso mod_rewrite e headers funcione corretamente será necessário adicionar alguma linhas.
+
+O HTTP Strict Transport Security ou HSTS (RFC 6797) é um novo padrão de segurança SSL aprovado recentemente pelo IETF. Ele traz diversas melhorias para o SSL como forçar a utilização do HTTPS impedindo que sites sejam acessados usando o protocolo HTTP ou que partes do código de um site que está usando HTTPS seja executado em servidores usando o HTTP entre outras.
+
+```console
+sudo vi /etc/apache2/sites-enabled/000-default.conf
+```
+
+Adicione abaixo de “DocumentRoot /var/www/html” o seguinte:
+
+```console
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+
+    <Directory /var/www/html/>
+        Options FollowSymLinks
+        AllowOverride All
+    </Directory>
+```
+
+Ou pode-se executar o comando abaixo para incluir o texto automaticamente:
+
+```console
+sudo cp /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf.bak
+
+sudo awk 'NR==14 {print "\tHeader always set Strict-Transport-Security \"max-age=63072000; includeSubDomains\"\n\n\t<Directory /var/www/html/>\n\t\tOptions FollowSymLinks\n\t\tAllowOverride All\n\t</Directory>\n"} 1' /etc/apache2/sites-enabled/000-default.conf.bak > /etc/apache2/sites-enabled/000-default.conf
+```
+
+A aparência deverá ser esta:
+
+![Imagem do apache2 em execução](imagens/Aula08-00-Server-Lamp-01.png)
 
 ## Instalando o UFW
 
