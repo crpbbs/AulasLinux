@@ -51,6 +51,18 @@ A saída habilitada deve indicar que o serviço Apache2 será iniciado automatic
 
 ![Imagem do apache2 em execução](imagens/Aula7-NextCloud-02.png)
 
+Para você aprender mais como o apache funciona recomendo: [Como ter diversos sub/domínios no mesmo servidor](https://blog.remontti.com.br/3464).
+
+Por segurança remova a assinatura do apache e reinicie o apache2 para que tenha efeito as nossas alterações.
+
+```console
+sudo sed -i 's/ServerTokens OS/ServerTokens Prod/' /etc/apache2/conf-available/security.conf
+
+sudo sed -i 's/ServerSignature On/ServerSignature Off/' /etc/apache2/conf-available/security.conf
+
+sudo systemctl restart apache2
+```
+
 Já pode-se acessar no servidor apache pelo http://localhost ou http://nome_do_servidor_na_rede.
 
 ![Imagem do apache2 em execução](imagens/Aula7-NextCloud-02b.png)
@@ -165,6 +177,7 @@ Você deverá ver que o PHP 8.2 está instalado com extensões habilitadas, como
 Em seguida, execute o comando do editor vim abaixo para abrir o arquivo de configuração PHP /etc/php/8.2/apache2/php.ini .
 
 ```console
+sudo cp /etc/php/8.2/apache2/php.ini /etc/php/8.2/apache2/php.ini.bak
 sudo vi /etc/php/8.2/apache2/php.ini
 ```
 
@@ -206,21 +219,62 @@ zend_extension=opcache
 Adicione as seguintes linhas à seção [opcache] ou localize e altere estas variáveis, descomentando as mesmsas. A configuração OPCache é recomendada pela Nextcloud.
 
 ```console
-opcache.enable = 1
-opcache.interned_strings_buffer = 8
-opcache.max_accelerated_files = 10000
-opcache.memory_consumption = 128
-opcache.save_comments = 1
-opcache.revalidate_freq = 1
+opcache.enable=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=10000
+opcache.memory_consumption=128
+opcache.save_comments=1
+opcache.revalidate_freq=1
 ```
 
 Salve o arquivo e feche o editor quando terminar.
+
+Ou pode-se utilizar os comandos abaixo para realizar a troca de forma automática.
+
+```console
+sudo cp /etc/php/8.2/apache2/php.ini /etc/php/8.2/apache2/php.ini.bak
+sudo sed -i 's/;date.timezone =/date.timezone = America\/Sao_Paulo/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/memory_limit = 128M/memory_limit = 512M/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 1024M/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/post_max_size = 8M/post_max_size = 600M/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/max_execution_time = 30/max_execution_time = 300/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/output_buffering = 4096/output_buffering = Off/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;zend_extension=opcache/zend_extension=opcache/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;opcache.enable=1/opcache.enable=1/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;opcache.interned_strings_buffer=8/opcache.interned_strings_buffer=8/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files=10000/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;opcache.memory_consumption=128/opcache.memory_consumption=128/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;opcache.save_comments=1/opcache.save_comments=1/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;opcache.revalidate_freq=2/opcache.revalidate_freq=1/' /etc/php/8.2/apache2/php.ini
+```
 
 Por último, digite o comando systemctl abaixo para reiniciar o serviço Apache2. Cada vez que você fizer alterações na configuração do PHP, reinicie o serviço Apache2 para aplicar as alterações feitas.
 
 ```console
 sudo systemctl restart apache2
 ```
+
+Neste ponto podemos criar uma arquivo no diretório /var/www/html da seguinte forma:
+
+```console
+sudo vi /var/www/html/phpinfo.php
+```
+
+Coloque este conteúdo no arquivo:
+
+```console
+<?php
+
+phpinfo();
+
+?>
+```
+
+Já pode-se acessar no servidor pelo http://localhost/phpinfo.php ou http://nome_do_servidor_na_rede/phpinfo.php para ver como está a configuração do seu PHP.
+
+Vamos ter algo parecido com:
+
+![Imagem sobre a versão do php e as extensões instaladas](imagens/Aula08-00-Server-Lamp-03.png)
 
 ## Instalando o Servidor MariaDB
 
@@ -229,7 +283,7 @@ Após instalar o servidor web Apache2 e PHP 8.2, você instalará o servidor Mar
 Instale o servidor MariaDB através do comando apt install abaixo. Insira y quando solicitado e pressione ENTER para prosseguir com a instalação
 
 ```console
-sudo apt install mariadb-server
+sudo apt install mariadb-server mariadb-client
 ```
 
 ![Imagem de instalação do mariadb-server](imagens/Aula7-NextCloud-08.png)
@@ -370,6 +424,65 @@ Digite quit para sair do servidor MariaDB e conclua esta seção.
 
 ```console
 quit
+```
+
+## Instalando phpMyAdmin
+
+Caso queira pode-se instalar o PhpMyAdmin. Não é obrigatório, caso não queira, basta pular esta estapa.
+
+O phpMyAdmin é uma ferramenta de administração de banco de dados baseada na web, escrita em PHP. Ela permite que os usuários gerenciem bancos de dados MySQL ou MariaDB através de uma interface gráfica amigável. Com o phpMyAdmin, os usuários podem criar, modificar e excluir bancos de dados, tabelas, campos, índices e executar consultas SQL. É uma ferramenta popular e amplamente utilizada para gerenciar bancos de dados MySQL ou MariaDB.
+
+```console
+sudo apt install phpmyadmin
+```
+
+Selecione Apache2
+
+![Aula08-00-Server-Lamp-04.png](imagens/Aula08-00-Server-Lamp-04.png)
+
+Responda Yes/Sim
+
+![Aula08-00-Server-Lamp-05.png](imagens/Aula08-00-Server-Lamp-05.png)
+
+Informe a senha para o banco de dados do phpmyadmin. Esta senha será do usuário phpmyadmin.
+
+![Aula08-00-Server-Lamp-06.png](imagens/Aula08-00-Server-Lamp-06.png)
+
+Repita a senha
+
+![Aula08-00-Server-Lamp-07.png](imagens/Aula08-00-Server-Lamp-07.png)
+
+Para acessar o phpMyadmin abra o navegador e digite:  http://localhost/phpmyadmin ou http://nome_do_servidor_na_rede/phpmyadmin/
+
+Usuário: phpmyadmin
+
+Senha: a mesma que acabou de digitar na instalação.
+
+![Aula08-00-Server-Lamp-08.png](imagens/Aula08-00-Server-Lamp-08.png)
+
+Essa é a tela inicial do phpMyAdmin
+
+![Aula08-00-Server-Lamp-09.png](imagens/Aula08-00-Server-Lamp-09.png)
+
+Apague seus rastros, em /root/.mysql_history temos um histórico com todos os comandos dado no terminal do MariaDB, então não é legal deixar lá em texto puro a senha que setamos!
+
+Primeiro faça:
+
+```console
+sudo su
+```
+
+Depois faça:
+
+```console
+> /root/.mysql_history
+exit
+```
+
+Ou faça apenas:
+
+```console
+sudo truncate -s 0 /root/.mysql_history
 ```
 
 ## Baixando o código-fonte do Nextcloud
