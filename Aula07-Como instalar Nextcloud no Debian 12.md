@@ -98,6 +98,15 @@ awk 'NR==14 {print "\tHeader always set Strict-Transport-Security \"max-age=6307
 exit
 ```
 
+Ou pode-se fazer da seguinte forma:
+
+```console
+sudo cp /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf.bak
+sudo awk 'NR==14 {print "\tHeader always set Strict-Transport-Security \"max-age=63072000; includeSubDomains\"\n\n\t<Directory /var/www/html/>\n\t\tOptions FollowSymLinks\n\t\tAllowOverride All\n\t</Directory>\n"} 1' /etc/apache2/sites-enabled/000-default.conf > 000-default.conf
+sudo chown root:root 000-default.conf
+sudo mv 000-default.conf /etc/apache2/sites-enabled/000-default.conf
+```
+
 A aparência deverá ser esta:
 
 ![Imagem do apache2 em execução](imagens/Aula08-00-Server-Lamp-01.png)
