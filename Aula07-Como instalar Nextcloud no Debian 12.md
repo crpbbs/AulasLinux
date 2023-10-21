@@ -435,6 +435,22 @@ Digite quit para sair do servidor MariaDB e conclua esta seção.
 quit
 ```
 
+Pode-se criar a base de dados também utilizando o script abaixo:
+
+```console
+sudo echo "CREATE DATABASE nextcloud_db;
+CREATE USER nextclouduser@localhost IDENTIFIED BY '61roseli';
+GRANT ALL PRIVILEGES ON nextcloud_db.* TO nextclouduser@localhost;
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR nextclouduser@localhost;
+quit" > db-nextcloud.sql
+sudo chown root:root db-nextcloud.sql
+sudo mariadb -u root -p61roseli < db-nextcloud.sql > db-nextcloud.tab
+sudo cat db-nextcloud.tab
+sudo rm -rf db-nextcloud.sql
+sudo rm -rf db-nextcloud.tab
+```
+
 ## Instalando phpMyAdmin
 
 Caso queira pode-se instalar o PhpMyAdmin. Não é obrigatório, caso não queira, basta pular esta estapa.
@@ -686,6 +702,7 @@ Nas etapas a seguir, você adicionará configurações à instalação do Nextcl
 Abra a configuração padrão do Nextcloud /var/www/nextcloud/config/config.php usando o comando do editor nano abaixo.
 
 ```console
+sudo cp /var/www/html/nextcloud/config/config.sample.php /var/www/html/nextcloud/config/config.php
 sudo vi /var/www/html/nextcloud/config/config.php
 ```
 
