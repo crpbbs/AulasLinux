@@ -1,21 +1,16 @@
-# Como instalar e Configurar Nextcloud no Debian 12
+# Como instalar WordPress no Debian 12
 
-Nextcloud é um software de código aberto para a criação de armazenamento de arquivos públicos e privados. Ele permite que você crie seus serviços auto-hospedados como Dropbox, Google Drive ou Mega.nz. Inicialmente, foi criado pelo desenvolvedor original do owncloud, Frank Karlitschek. Em 2016, ele bifurcou o projeto Owncloud e criou um novo projeto com o novo nome "Nextcloud"
-
-Até agora, o projeto Nextcloud está crescendo rapidamente e se tornando mais do que um software de hospedagem de arquivos. É mais como uma plataforma de sincronização de arquivos e colaboração de conteúdo. Apoiado por muitos plug-ins, Nextcloud se tornou um software de colaboração muito poderoso. Você pode instalar plug-ins para gerenciamento de projetos, videoconferência, edição colaborativa, anotações, cliente de e-mail, etc.
-
-Este tutorial mostrará como instalar o Nextcloud em um servidor Debian 12. Você instalará o Nextcloud com servidor web Apache2, servidor MariaDB e PHP 8.2. Além disso, você também protegerá sua instalação com certificados UFW (Firewall Descomplicado) e SSL/TLS da Letsencrypt.
+WordPress é um sistema de gerenciamento de conteúdo (CMS) popular usado para criar e gerenciar sites. É uma plataforma de código aberto escrita em PHP e combinada com um banco de dados MySQL ou MariaDB. O WordPress oferece uma interface amigável e uma ampla variedade de temas, plug-ins e opções de personalização, tornando-o acessível a usuários com diversos níveis de conhecimento técnico.
 
 ## Pré-requisitos
-Para concluir este guia, certifique-se de ter o seguinte:
 
-Um servidor Debian 12 com pelo menos 4 GB de memória e 2 CPUs.
-Um usuário não root com privilégios de administrador.
-Um nome de domínio apontado para o endereço IP do servidor.
+* Um servidor Debian 12 com pelo menos 4 GB de memória e 2 CPUs.
+* Um usuário não root com privilégios de administrador.
+* Um nome de domínio apontado para o endereço IP do servidor.
 
 ## Instalando o servidor web Apache2
 
-Na primeira etapa, você instalará o servidor web Apache2 que será usado para executar o Nextcloud.
+Na primeira etapa, você instalará o servidor web Apache2 que será usado para executar o WordPress.
 
 Primeiro, atualize o índice do seu pacote Debian através do comando apt update abaixo. Quando terminar, você obterá as informações mais recentes do pacote que permitem instalar a versão mais recente dos pacotes.
 
@@ -24,7 +19,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-Agora digite o seguinte comando apt install para instalar o servidor web Apache. Insira y para confirmar quando solicitado e pressione ENTER para prosseguir com a instalação.
+Agora digite o seguinte comando apt install para instalar o servidor web Apache. Insira y/s para confirmar quando solicitado e pressione ENTER para prosseguir com a instalação.
 
 ```console
 sudo apt install apache2 apache2-utils
@@ -165,7 +160,7 @@ Execute o comando apt install abaixo para instalar pacotes PHP em seu sistema De
 
 ```console
 sudo apt install php libapache2-mod-php libmagickcore-dev
-sudo apt install php-{common,mysql,xml,xmlrpc,curl,gd,imagick,cli,dev,imap,mbstring,opcache,soap,zip,intl,pear,gmp,bcmath,json,bz2,apcu}
+sudo apt install php-{common,mysql,xml,xmlrpc,curl,gd,imagick,cli,dev,imap,mbstring,opcache,soap,zip,intl,pear,gmp,bcmath,json,bz2,apcu,redis,snmp,mysqli,fpm,mysqlnd}
 ```
 
 Insira y/s para confirmar a instalação e pressione ENTER para continuar.
@@ -229,7 +224,7 @@ Adicione as seguintes linhas à seção [opcache] ou localize e altere estas var
 
 ```console
 opcache.enable=1
-opcache.interned_strings_buffer=8
+opcache.interned_strings_buffer=18
 opcache.max_accelerated_files=10000
 opcache.memory_consumption=128
 opcache.save_comments=1
@@ -250,7 +245,7 @@ sudo sed -i 's/max_execution_time = 30/max_execution_time = 300/' /etc/php/8.2/a
 sudo sed -i 's/output_buffering = 4096/output_buffering = Off/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/;zend_extension=opcache/zend_extension=opcache/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/;opcache.enable=1/opcache.enable=1/' /etc/php/8.2/apache2/php.ini
-sudo sed -i 's/;opcache.interned_strings_buffer=8/opcache.interned_strings_buffer=8/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/;opcache.interned_strings_buffer=8/opcache.interned_strings_buffer=18/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files=10000/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/;opcache.memory_consumption=128/opcache.memory_consumption=128/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/;opcache.save_comments=1/opcache.save_comments=1/' /etc/php/8.2/apache2/php.ini
@@ -319,7 +314,7 @@ sudo mariadb-secure-installation
 Durante o processo, você deve inserir Y para concordar e aplicar a configuração ao MariaDB, ou inserir n para discordar e deixar a configuração como padrão. Abaixo estão algumas configurações do MariaDB que serão solicitadas:
 
 * Pressione ENTER quando for solicitada a senha root do MariaDB.
-* Insira n quando questionado sobre o método de autenticação unix_socket.
+* Insira Y quando questionado sobre o método de autenticação unix_socket.
 * Insira Y para configurar uma nova senha para o usuário root do MariaDB. Em seguida, insira a nova senha e repita.
 * Insira Y para remover o usuário anônimo padrão do MariaDB.
 * Em seguida, insira Y novamente para desabilitar o login remoto para o usuário root do MariaDB.
@@ -346,7 +341,7 @@ can log into the MariaDB root user without the proper authorisation.
 
 You already have your root account protected, so you can safely answer 'n'.
 
-Switch to unix_socket authentication [Y/n] n
+Switch to unix_socket authentication [Y/n] Y
  ... skipping.
 
 You already have your root account protected, so you can safely answer 'n'.
@@ -400,7 +395,7 @@ Thanks for using MariaDB!
 
 ## Criando Banco de Dados e Usuário
 
-Após instalar o servidor MariaDB, agora você criará um novo banco de dados e usuário para Nextcloud. Para conseguir isso, você deve fazer login no servidor MariaDB através do cliente mariadb.
+Após instalar o servidor MariaDB, agora você criará um novo banco de dados e usuário para o WordPress. Para conseguir isso, você deve fazer login no servidor MariaDB através do cliente mariadb.
 
 Faça login no servidor MariaDB usando o comando do cliente mariadb abaixo. Insira a senha root do MariaDB quando solicitado.
 
@@ -408,26 +403,26 @@ Faça login no servidor MariaDB usando o comando do cliente mariadb abaixo. Insi
 sudo mariadb -u root -p
 ```
 
-Uma vez logado no MariaDB, execute as seguintes consultas para criar um novo banco de dados Mariadb e usuário para Nextcloud. Neste exemplo, você criará um novo banco de dados nextcloud_db e o usuário nextclouduser com a senha StrongPassword. Certifique-se de alterar a senha StrongPassword por uma nova senha.
+Uma vez logado no MariaDB, execute as seguintes consultas para criar um novo banco de dados Mariadb e usuário para WordPress. Neste exemplo, você criará um novo banco de dados wordpress_db e o usuário wordpress_user com a senha StrongPassword. Certifique-se de alterar a senha StrongPassword por uma nova senha.
 
 ```console
-CREATE DATABASE nextcloud_db;
-CREATE USER nextclouduser@localhost IDENTIFIED BY 'StrongPassword';
-GRANT ALL PRIVILEGES ON nextcloud_db.* TO nextclouduser@localhost;
+CREATE DATABASE wordpress_db;
+CREATE USER wordpress_user@localhost IDENTIFIED BY 'StrongPassword';
+GRANT ALL PRIVILEGES ON wordpress_db.* TO wordpress_user@localhost;
 FLUSH PRIVILEGES;
 ```
 
-![Imagem criando a base de dados e o usuário para mariadb](imagens/Aula7-NextCloud-10.png)
+![Aula09-00-Server-Lamp-01.png](imagens/Aula09-00-Server-Lamp-01.png)
 
 Ainda dentro do mariadb e por último, execute a consulta a seguir para garantir que o usuário nextclouduser possa acessar o banco de dados nextcloud_db .
 
 ```console
-SHOW GRANTS FOR nextclouduser@localhost;
+SHOW GRANTS FOR wordpress_user@localhost;
 ```
 
-Se tudo correr bem, você deverá ver que o usuário nextclouduser tem privilégios para o banco de dados nextcloud_db .
+Se tudo correr bem, você deverá ver que o usuário wordpress_user tem privilégios para o banco de dados wordpress_db .
 
-![Imagem vendo os privilégios do usuário criado](imagens/Aula7-NextCloud-11.png)
+![Aula09-00-Server-Lamp-02.png](imagens/Aula09-00-Server-Lamp-02.png)
 
 Digite quit para sair do servidor MariaDB e conclua esta seção.
 
@@ -438,17 +433,17 @@ quit
 Pode-se criar a base de dados também utilizando o script abaixo:
 
 ```console
-sudo echo "CREATE DATABASE nextcloud_db;
-CREATE USER nextclouduser@localhost IDENTIFIED BY 'StrongPassword';
-GRANT ALL PRIVILEGES ON nextcloud_db.* TO nextclouduser@localhost;
+sudo echo "CREATE DATABASE wordpress_db;
+CREATE USER wordpress_user@localhost IDENTIFIED BY 'StrongPassword';
+GRANT ALL PRIVILEGES ON wordpress_db.* TO wordpress_user@localhost;
 FLUSH PRIVILEGES;
-SHOW GRANTS FOR nextclouduser@localhost;
-quit" > db-nextcloud.sql
-sudo chown root:root db-nextcloud.sql
-sudo mariadb -u root -pStrongPassword < db-nextcloud.sql > db-nextcloud.tab
-sudo cat db-nextcloud.tab
-sudo rm -rf db-nextcloud.sql
-sudo rm -rf db-nextcloud.tab
+SHOW GRANTS FOR wordpress_user@localhost;
+quit" > db-wordpress.sql
+sudo chown root:root db-wordpress.sql
+sudo mariadb -u root -pStrongPassword < db-wordpress.sql > db-wordpress.tab
+sudo cat db-wordpress.tab
+sudo rm -rf db-wordpress.sql
+sudo rm -rf db-wordpress.tab
 ```
 
 ## Instalando phpMyAdmin
@@ -510,11 +505,11 @@ Ou faça apenas:
 sudo truncate -s 0 /root/.mysql_history
 ```
 
-## Baixando o código-fonte do Nextcloud
+## Baixando o código-fonte do WordPress
 
-Neste ponto, todos os pacotes de software para executar o Nextcloud estão instalados. Agora você fará o download da versão mais recente do código-fonte do Nextcloud e a instalará. Verifique a página de download do Nextcloud antes de começar para obter informações sobre a versão mais recente do Nextcloud.
+Neste ponto, todos os pacotes de software para executar o WordPress estão instalados. Agora você fará o download da versão mais recente do código-fonte do WordPress e a instalará. Verifique a página de download do WordPress antes de começar para obter informações sobre a versão mais recente do WordPress.
 
-Antes de baixar o código-fonte do Nextcloud, execute o comando apt install abaixo para instalar o curl e descompactar.
+Antes de baixar o código-fonte do WordPress, execute o comando apt install abaixo para instalar o curl e o descompactador unzip.
 
 ```console
 sudo apt install curl unzip
@@ -522,51 +517,65 @@ sudo apt install curl unzip
 
 ![Imagem mostrando a instalação do curl e do unzip](imagens/Aula7-NextCloud-12.png)
 
-Vá para o diretório /var/www e baixe o código-fonte do Nextcloud por meio do comando curl abaixo. Visite a página de download do Nextcloud para obter a versão mais recente do Nextcloud.
+Vá para o diretório /var/www e baixe o código-fonte do WordPress por meio do comando curl abaixo. Visite a página de download do WordPress para obter a versão mais recente do WordPress.
 
 ```console
 cd /var/www/html
-sudo curl -o nextcloud.zip https://download.nextcloud.com/server/releases/latest.zip
+sudo wget https://wordpress.org/latest.zip
 ```
 
-![Imagem do downloado do nextcloud](imagens/Aula7-NextCloud-13.png)
+![Aula09-00-Server-Lamp-03.png](imagens/Aula09-00-Server-Lamp-03.png)
 
-Quando baixei a última versão era a nextcloud-27.1.2.zip, mas baixei a latest.zip mesmo.
+Quando baixei a última versão era a wordpress-6.3.2, mas baixei a latest.zip mesmo.
 
-Agora extraia o arquivo nextcloud.zip por meio do comando unzip e, em seguida, altere a propriedade do diretório nextcloud para www-data .
+Agora extraia o arquivo latest.zip por meio do comando unzip e, em seguida, altere a propriedade do diretório wordpress para www-data .
 
 ```console
-sudo unzip nextcloud.zip
-sudo chown -R www-data:www-data nextcloud
+sudo unzip latest.zip
+sudo chown -R www-data:www-data wordpress
+cd wordpress
+sudo find . -type d -exec chmod 755 {} \;
+sudo find . -type f -exec chmod 644 {} \;
 ```
 
-Com isso, você deve notar que o diretório raiz do documento para instalação do Nextcloud é o diretório /var/www/html/nextcloud . E o servidor web Apache2 pode acessar o código-fonte do nextcloud por meio do usuário www-data .
+Com isso, você deve notar que o diretório raiz do documento para instalação do WordPress é o diretório /var/www/html/wordpress. E o servidor web Apache2 pode acessar o código-fonte do wordpress por meio do usuário www-data .
+
+Agora, abra o arquivo wp-config.php com seu editor favorito e insira as credenciais do banco de dados que você criou na etapa anterior.
+
+```console
+sudo cp wp-config-sample.php wp-config.php 
+sudo vi wp-config.php
+```
+
+Deve ser algo semelhante a isto:
+
+![Aula09-00-Server-Lamp-04.png](imagens/Aula09-00-Server-Lamp-04.png)
 
 ## Configurando o host virtual Apache2
 
-Após baixar o código-fonte do Nextcloud, você deve criar a nova configuração do host virtual Apache2 que será usada para executar o Nextcloud. Certifique-se de ter o nome de domínio apontado para o endereço IP do servidor Debian para a instalação do Nextcloud.
+Após baixar o código-fonte do WordPress, você deve criar a nova configuração do host virtual Apache2 que será usada para executar o WordPress. Certifique-se de ter o nome de domínio apontado para o endereço IP do servidor Debian para a instalação do WordPress.
 
-Crie uma nova configuração de host virtual Apache2 /etc/apache2/sites-available/nextcloud.conf usando o comando nano abaixo.
+Crie uma nova configuração de host virtual Apache2 /etc/apache2/sites-available/wordpress.conf usando o comando abaixo.
 
 ```console
-sudo vi /etc/apache2/sites-available/nextcloud.conf
+sudo vi /etc/apache2/sites-available/wordpress.conf
 ```
 
 Altere o nome de domínio no parâmetro ServerName com seu domínio e o caminho completo do log para os parâmetros ErrorLog e CustomLog.
 
 ```console
 <VirtualHost *:80>
-    ServerAdmin admin@linuxlab.blog.br
-    ServerName nextcloud.linuxlab.blog.br
-    DocumentRoot /var/www/html/nextcloud/
+    ServerAdmin admin@wordpress.linuxlab.blog.br
+    ServerName wordpress.linuxlab.blog.br
+    DocumentRoot /var/www/html/wordpress/
 
-    Alias /nextcloud "/var/www/html/nextcloud/"
+    Alias /wordpress "/var/www/html/wordpress/"
 
     # log files
-    ErrorLog /var/log/apache2/files.linuxlab.blog.br-error.log
-    CustomLog /var/log/apache2/files.linuxlab.blog.br-access.log combined
+    ErrorLog /var/log/apache2/files.wordpress.linuxlab.blog.br-error.log
+    CustomLog /var/log/apache2/files.wordpress.linuxlab.blog.br-access.log combined
 
-    <Directory /var/www/html/nextcloud/>
+    <Directory /var/www/html/wordpress/>
         Options +FollowSymlinks
         AllowOverride All
 
@@ -574,44 +583,55 @@ Altere o nome de domínio no parâmetro ServerName com seu domínio e o caminho 
             Dav off
         </IfModule>
 
-        SetEnv HOME /var/www/html/nextcloud
-        SetEnv HTTP_HOME /var/www/html/nextcloud
+        SetEnv HOME /var/www/html/wordpress
+        SetEnv HTTP_HOME /var/www/html/wordpress
     </Directory>
 </VirtualHost>
 ```
 
 Quando terminar, salve o arquivo e saia do editor.
 
-Em seguida, execute o comando a2ensite abaixo para habilitar a configuração do host virtual nextcloud.conf . Em seguida, verifique a configuração geral do Apache2 por meio do comando apachectl abaixo.
+Em seguida, execute o comando a2ensite abaixo para habilitar a configuração do host virtual wordpress.conf. Em seguida, verifique a configuração geral do Apache2 por meio do comando apachectl abaixo.
 
 ```console
-sudo a2ensite nextcloud.conf
+sudo a2enmod rewrite
+sudo a2ensite wordpress.conf
 sudo apachectl configtest
 ```
 
-![Imagem executando o comando para habilitar o site e ver como está a configuração geral](imagens/Aula7-NextCloud-14.png)
+![Aula09-00-Server-Lamp-05.png](imagens/Aula09-00-Server-Lamp-05.png)
 
 Você deverá ver a saída Sintaxe OK se tiver configurações corretas e adequadas do Apache.
 
-Agora insira o seguinte comando systemctl para reiniciar o serviço Apache2 e aplicar a configuração do host virtual Nextcloud.
+Agora insira o seguinte comando systemctl para reiniciar o serviço Apache2 e aplicar a configuração do host virtual WordPress.
 
 ```console
 sudo systemctl restart apache2
 ```
 
-Após a reinicialização do Apache2, sua instalação do Nextcloud deverá estar acessível por meio de um protocolo HTTP inseguro.
+Após a reinicialização do Apache2, sua instalação do WordPress deverá estar acessível por meio de um protocolo HTTP inseguro.
 
-http://linuxlab.blog.br/nextcloud
+http://linuxlab.blog.br/wordpress
 
-Visite o seu nome de domínio Nextcloud e você deverá obter a página de instalação como esta:
+Visite o seu nome de domínio WordPress e você deverá obter a página de instalação como esta:
 
-![Imagem da tela inicial do nextcloud](imagens/Aula7-NextCloud-15.png)
+Selecione seu idioma e clique no botão Continuar.
 
-## Protegendo Nextcloud com certificados SSL/TLS
+![Aula09-00-Server-Lamp-06.png](imagens/Aula09-00-Server-Lamp-06.png)
 
-Para adicionar uma camada de segurança adicional ao seu Nextcloud, você configurará HTTPS na configuração do host virtual Apache2 via Certbot. O Certbot é uma ferramenta de linha de comando para gerar certificados SSL/TLS gratuitos do Letsencrypt e vem com um plugin adicional que permite configurar HTTPS automaticamente para vários servidores web.
+Forneça as informações solicitadas e clique no botão Instalar WordPress.
 
-Execute o comando apt install abaixo para instalar o plugin Certbot e Certbot Apache. Insira y, quando solicitada a confirmação, e pressione ENTER para continuar.
+![Aula09-00-Server-Lamp-07.png](imagens/Aula09-00-Server-Lamp-07.png)
+
+Assim que a instalação for concluída. Você deverá ver a seguinte tela:
+
+![Aula09-00-Server-Lamp-08.png](imagens/Aula09-00-Server-Lamp-08.png)
+
+## Protegendo WordPress com certificados SSL/TLS
+
+Para adicionar uma camada de segurança adicional ao seu WordPress, você configurará HTTPS na configuração do host virtual Apache2 via Certbot. O Certbot é uma ferramenta de linha de comando para gerar certificados SSL/TLS gratuitos do Letsencrypt e vem com um plugin adicional que permite configurar HTTPS automaticamente para vários servidores web.
+
+Execute o comando apt install abaixo para instalar o plugin Certbot e Certbot Apache. Insira y/s, quando solicitada a confirmação, e pressione ENTER para continuar.
 
 ```console
 sudo apt install certbot python3-certbot-apache
@@ -619,10 +639,10 @@ sudo apt install certbot python3-certbot-apache
 
 ![Imagem da instalação do cerbot e do python3-cerbot-apache](imagens/Aula7-NextCloud-16.png)
 
-Agora execute o comando certbot abaixo para gerar certificados SSL/TLS para seu nome de domínio Nextcloud e configurar automaticamente HTTPS dentro do host virtual Apache2. Certifique-se de alterar o nome de domínio e o endereço de e-mail no comando a seguir.
+Agora execute o comando certbot abaixo para gerar certificados SSL/TLS para seu nome de domínio WordPress e configurar automaticamente HTTPS dentro do host virtual Apache2. Certifique-se de alterar o nome de domínio e o endereço de e-mail no comando a seguir.
 
 ```console
-sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email crpbbs@yahoo.com.br -d nextcloud.linuxlab.blog.br
+sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email crpbbs@yahoo.com.br -d wordpress.linuxlab.blog.br
 ```
 
 Após executar este comando você recebe uma mensagem. Eu respondi a mensagem que não, porque a pergunta é sobre eles enviarem e-mails para você sobre o trabalho deles.
@@ -639,18 +659,18 @@ EFF news, campaigns, and ways to support digital freedom.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 (Y)es/(N)o: N
 Account registered.
-Requesting a certificate for nextcloud.linuxlab.blog.br
+Requesting a certificate for wordpress.linuxlab.blog.br
 
 Successfully received certificate.
-Certificate is saved at: /etc/letsencrypt/live/nextcloud.linuxlab.blog.br/fullchain.pem
-Key is saved at:         /etc/letsencrypt/live/nextcloud.linuxlab.blog.br/privkey.pem
+Certificate is saved at: /etc/letsencrypt/live/wordpress.linuxlab.blog.br/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/wordpress.linuxlab.blog.br/privkey.pem
 This certificate expires on 2023-12-30.
 These files will be updated when the certificate renews.
 Certbot has set up a scheduled task to automatically renew this certificate in the background.
 
 Deploying certificate
-Successfully deployed certificate for nextcloud.linuxlab.blog.br to /etc/apache2/sites-available/nextcloud-le-ssl.conf
-Congratulations! You have successfully enabled HTTPS on https://nextcloud.linuxlab.blog.br
+Successfully deployed certificate for wordpress.linuxlab.blog.br to /etc/apache2/sites-available/wordpress-le-ssl.conf
+Congratulations! You have successfully enabled HTTPS on https://wordpress.linuxlab.blog.br
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 If you like Certbot, please consider supporting our work by:
@@ -659,90 +679,22 @@ If you like Certbot, please consider supporting our work by:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ```
 
-Assim que o processo for concluído, o nome de domínio Nextcloud deve ser configurado com HTTPS, que é gerenciado pelo plugin Certbot Apache. E os certificados SSL/TLS estão localizados no diretório /etc/letsencrypt/live/domain-name.com/ .
+Assim que o processo for concluído, o nome de domínio WordPress deve ser configurado com HTTPS, que é gerenciado pelo plugin Certbot Apache. E os certificados SSL/TLS estão localizados no diretório /etc/letsencrypt/live/domain-name.com/ .
 
-## Instalando Nextcloud
+## Instalando WordPress
 
-Nesta seção, você iniciará a instalação do Nextcloud a partir do seu navegador. Neste processo, você também criará o usuário administrador do Nextcloud.
+Inicie seu navegador da web e visite o nome de domínio de sua instalação WordPress (no meu caso: http://linuxlab.blog.br/wordpress). Você deverá ser redirecionado automaticamente para uma conexão HTTPS segura e será solicitado a entrar com o nome e senha do administrador criado na etapa anterior.
 
-Inicie seu navegador da web e visite o nome de domínio de sua instalação Nextcloud (no meu caso: http://linuxlab.blog.br/nextcloud). Você deverá ser redirecionado automaticamente para uma conexão HTTPS segura e será solicitado a criar um usuário administrador para Nextcloud.
+Insira o novo usuário administrador e senha para seu WordPress.
 
-Insira o novo usuário administrador e senha para seu Nextcloud. Você também pode configurar um diretório de dados personalizado ou deixá-lo como padrão.
+![Aula09-00-Server-Lamp-09.png](imagens/Aula09-00-Server-Lamp-09.png)
 
-![Imagem iniciando o nextcloud](imagens/17-create-admin-user.webp)
+Em seguida, clique em Acessar. Você verá o menu principal do WordPress.
 
-Em seguida, role até a página inferior e insira os detalhes do nome do banco de dados, usuário e senha. Em seguida, clique em Concluir configuração para concluir a instalação.
-
-![Imagem instalando nextcloud](imagens/18-install-nextcloud.webp)
-
-Assim que a instalação for concluída, você deverá obter a recomendação do Nextcloud para instalar alguns dos aplicativos Nextcloud. Caso queira, poderá instalar os aplicativos recomendados agora.
-
-![Imagem Instalando plugins no nextcloud](imagens/19-skip-recomended-apps.webp)
-
-Agora você deve ver o painel do usuário como este:
-
-![Imagem do painel do nextcloud](imagens/Aula7-NextCloud-20.png)
-
-Agora clique no ícone da pasta para obter o gerenciador de arquivos do Nextcloud.
-
-![Imagem do gerenciador de arquivos do nextcloud](imagens/21-nextcloud-files.webp)
-
-Por último, clique no ícone do usuário no menu da direita e selecione Configurações de administração .
-
-![Inagem de configurações de administração](imagens/22-administration-settings.webp)
-
-Na seção Administração, clique em Visão geral. Você deve obter informações sobre sua versão do Nextcloud e algumas recomendações que pode aplicar ao seu Nextcloud, incluindo  algumas recomendações de segurança e otimizações de desempenho.
-
-![Imagem da visão geral do nextcloud](imagens/23-recommendation.webp)
-
-## Ajuste básico de desempenho para Nextcloud
-
-Nas etapas a seguir, você adicionará configurações à instalação do Nextcloud habilitando o cache de memória via OPCache e configurando o cron via crontab.
-
-Abra a configuração padrão do Nextcloud /var/www/nextcloud/config/config.php usando o comando do editor nano abaixo.
-
-```console
-sudo cp /var/www/html/nextcloud/config/config.sample.php /var/www/html/nextcloud/config/config.php
-sudo vi /var/www/html/nextcloud/config/config.php
-```
-
-Na seção $CONFIG = array , adicione a nova configuração abaixo para habilitar o cache de memória para Nextcloud.
-
-```console
-<?php
-$CONFIG = array (
-....
-  # Additional configuration
-  'memcache.local' => '\OC\Memcache\APCu',
-);
-```
-
-Salve as alterações e feche o arquivo quando terminar.
-
-Em seguida, execute o seguinte comando para criar um novo crontab que será usado para executar o script Nextcloud crontab. O parâmetro -u www-data é usado porque o servidor web Apache2 está rodando sobre esse usuário.
-
-```console
-sudo crontab -u www-data -e
-```
-
-Escolha o editor que deseja usar 1-nano ou 2-vim.
-
-Adicione a seguinte configuração ao arquivo crontab.
-
-```console
-*/5  *  *  *  * php -f /var/www/html/nextcloud/cron.php
-```
-
-Salve e saia do arquivo quando terminar.
-
-Verifique a lista crontab do usuário www-data usando o seguinte comando. Certifique-se de ter o script crontab que você adicionou.
-
-```console
-sudo crontab -u www-data -l
-```
+![Aula09-00-Server-Lamp-10.png](imagens/Aula09-00-Server-Lamp-10.png)
 
 # Conclusão
 
-Está tudo pronto! Você concluiu a instalação do Nextcloud em seu sistema Debian. Você instalou Nextcloud com servidor web Apache2, PHP 8.2 e o servidor de banco de dados MariaDB. Você também protegeu seu Nextcloud com UFW (Uncomplicated Firewall) e certificados SSL/TLS via Certbot e Letsencrypt.
+Está tudo pronto! Você concluiu a instalação do WordPress em seu sistema Debian. Você instalou WordPress com servidor web Apache2, PHP 8.2 e o servidor de banco de dados MariaDB. Você também protegeu seu WordPress com UFW (Uncomplicated Firewall) e certificados SSL/TLS via Certbot e Letsencrypt.
 
-Com toda essa configuração, agora você pode usar o Nextcloud para armazenar seus documentos com segurança ou adicionar armazenamento de dados de terceiros ao seu Nextcloud.
+Com toda essa configuração, agora você pode usar o WordPress para criar suas páginas da web ou seu blog. Boa sorte
