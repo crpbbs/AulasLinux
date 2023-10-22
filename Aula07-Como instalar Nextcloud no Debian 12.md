@@ -201,7 +201,7 @@ Aumente o valor padrão dos parâmetros memory_limit, upload_max_filesize, post_
 ```console
 memory_limit = 512M
 upload_max_filesize = 1024M
-post_max_size = 600M
+post_max_size = 1024M
 max_execution_time = 300
 ```
 
@@ -245,7 +245,7 @@ sudo cp /etc/php/8.2/apache2/php.ini /etc/php/8.2/apache2/php.ini.bak
 sudo sed -i 's/;date.timezone =/date.timezone = America\/Sao_Paulo/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/memory_limit = 128M/memory_limit = 512M/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 1024M/' /etc/php/8.2/apache2/php.ini
-sudo sed -i 's/post_max_size = 8M/post_max_size = 600M/' /etc/php/8.2/apache2/php.ini
+sudo sed -i 's/post_max_size = 8M/post_max_size = 1024M/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/max_execution_time = 30/max_execution_time = 300/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/output_buffering = 4096/output_buffering = Off/' /etc/php/8.2/apache2/php.ini
 sudo sed -i 's/;zend_extension=opcache/zend_extension=opcache/' /etc/php/8.2/apache2/php.ini
