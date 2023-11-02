@@ -67,6 +67,57 @@ Vamos agora instalar o Go lembrando que deveremos ter privilégio de root para a
     go version go1.21.3 linux/amd64
     ```
 
+    Para ver as variáveis de ambiente do Go, digite:
+
+    ```console
+    go env
+    ```
+
+    Vai aparecer na tela a seguinte informação:
+
+    ```go
+    GO111MODULE=''
+    GOARCH='amd64'
+    GOBIN=''
+    GOCACHE='/home/carlos/.cache/go-build'
+    GOENV='/home/carlos/.config/go/env'
+    GOEXE=''
+    GOEXPERIMENT=''
+    GOFLAGS=''
+    GOHOSTARCH='amd64'
+    GOHOSTOS='linux'
+    GOINSECURE=''
+    GOMODCACHE='/home/carlos/go/pkg/mod'
+    GONOPROXY=''
+    GONOSUMDB=''
+    GOOS='linux'
+    GOPATH='/home/carlos/go'
+    GOPRIVATE=''
+    GOPROXY='https://proxy.golang.org,direct'
+    GOROOT='/usr/local/go'
+    GOSUMDB='sum.golang.org'
+    GOTMPDIR=''
+    GOTOOLCHAIN='auto'
+    GOTOOLDIR='/usr/local/go/pkg/tool/linux_amd64'
+    GOVCS=''
+    GOVERSION='go1.21.3'
+    GCCGO='gccgo'
+    GOAMD64='v1'
+    AR='ar'
+    CC='gcc'
+    CXX='g++'
+    CGO_ENABLED='0'
+    GOMOD='/home/carlos/go/src/hello/go.mod'
+    GOWORK=''
+    CGO_CFLAGS='-O2 -g'
+    CGO_CPPFLAGS=''
+    CGO_CXXFLAGS='-O2 -g'
+    CGO_FFLAGS='-O2 -g'
+    CGO_LDFLAGS='-O2 -g'
+    PKG_CONFIG='pkg-config'
+    GOGCCFLAGS='-fPIC -m64 -fno-caret-diagnostics -Qunused-arguments -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build2454802822=/tmp/go-build -gno-record-gcc-switches'
+    ```
+
 ## Como escrever código Go
 
 Este documento demonstra o desenvolvimento de um pacote Go simples dentro de um módulo e apresenta a ferramenta go, a maneira padrão de buscar, construir e instalar módulos, pacotes e comandos Go.
@@ -128,7 +179,25 @@ func main() {
 }
 ```
 
-Agora você pode criar e instalar esse programa com a ferramenta go:
+O comando para rodar nosso aplicativo sem instalar é o run:
+
+```console
+go run go/srv/hello
+```
+
+O comando para compilar nosso aplicativo é o build, que cria o arquivo executável no mesmo diretório do programa fonte.
+
+```console
+go build go/srv/hello
+```
+
+Para executar bastar digite:
+
+```console
+./hello
+```
+
+Agora você pode criar e instalar esse programa com a opção install. O programa será compilado e colocado no diretório padrão go/bin.
 
 ```console
 go install go/src/hello
