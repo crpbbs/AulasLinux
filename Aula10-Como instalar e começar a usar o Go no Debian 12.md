@@ -43,11 +43,11 @@ Vamos agora instalar o Go lembrando que deveremos ter privilégio de root para a
     echo 'export GOROOT=/usr/local/go' | sudo tee -a /etc/profile
     echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile
 
-    echo 'export GOROOT=/usr/local/go' | tee -a ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a ~/.bashrc
-
     echo 'export GOROOT=/usr/local/go' | tee -a ~/.profile
     echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a ~/.profile
+    
+    echo 'export GOROOT=/usr/local/go' | tee -a ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a ~/.bashrc
 
     echo 'export GOROOT=/usr/local/go' | tee -a ~/.zshrc
     echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a ~/.zshrc
