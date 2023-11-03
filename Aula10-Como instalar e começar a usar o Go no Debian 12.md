@@ -179,13 +179,13 @@ func main() {
 }
 ```
 
-O comando para rodar nosso aplicativo sem instalar é o run:
+O comando para rodar nosso aplicativo sem instalar é o run. O comando "go run" é usado para executar um único arquivo Go. Ele compila o arquivo Go e o executa imediatamente, sem gerar um arquivo binário separado.
 
 ```console
 go run go/srv/hello
 ```
 
-O comando para compilar nosso aplicativo é o build, que cria o arquivo executável no mesmo diretório do programa fonte.
+O comando para compilar nosso aplicativo é o build, que cria o arquivo executável no mesmo diretório do programa fonte. O comando go build é usado para compilar um programa Go em um arquivo executável. Ele compila o código fonte Go presente no diretório atual ou em um pacote especificado e gera um executável no mesmo diretório. Ao executar o comando go build sem parâmetro nenhum, o Go compilará todos os arquivos Go presentes no diretório atual ou no pacote especificado e os vinculará para formar um único executável. Se houver algum erro de compilação, o comando exibirá uma mensagem de erro.
 
 ```console
 go build go/srv/hello
@@ -196,6 +196,8 @@ Para executar bastar digite:
 ```console
 ./hello
 ```
+
+Caso tenha utilizado o comando go build sem parâmetro ele criará o arquivo binário com o mesmo nome do pacote main.
 
 Agora você pode criar e instalar esse programa com a opção install. O programa será compilado e colocado no diretório padrão go/bin.
 
@@ -256,6 +258,16 @@ git init
 Vai aparecer na tela a seguinte informação:
 
 ```console
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
 Initialized empty Git repository in /home/carlos/go/src/hello/.git/
 ```
 
