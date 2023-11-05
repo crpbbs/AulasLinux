@@ -2,11 +2,11 @@
 
 ## Instalação
 
-Go é um ambiente de programação de código aberto que faz com que seja fácil de construir software simples, confiável e eficiente. Além de ser um projeto de código aberto desenvolvido pela equipe do Google e muitos contribuidores da comunidade open source, ele é distribuído sob a licença estilo BSD.
+Go é um ambiente de programação de código aberto que ajuda na construção de software simples, confiável e eficiente. Além de ser um projeto de código aberto desenvolvido por uma equipe do Google e por muitos colaboradores da comunidade de código aberto, ele é distribuído sob uma licença estilo BSD.
 
-Go é multiplataformas e distribuições oficiais dos binários estão disponíveis para o FreeBSD, Linux, MacOS X, NetBSD, e Windows.
+Go é multiplataforma, com distribuições oficiais de binários disponíveis para FreeBSD, Linux, MacOS X, NetBSD e Windows.
 
-Vamos agora instalar o Go lembrando que deveremos ter privilégio de root para a instalação do mesmo. No caso do Debian utilizamos o comando sudo para os privilégios de root, logo, se sua distribuição não esteja com o sudo configurado, logue-se como root para a execução do mesmo ou configure o sudo nela.
+Agora vamos instalar o Go, lembre-se que devemos ter privilégios de root para instalá-lo. Para o Debian, usamos o comando sudo para obter privilégios de root, portanto, se sua distribuição não tiver o sudo configurado, faça login como root para executá-lo ou instale e configure o sudo no seu Debian.
 
 1. Download do Go
 
