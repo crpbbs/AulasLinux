@@ -124,9 +124,9 @@ Este documento demonstra o desenvolvimento de um pacote Go simples dentro de um 
 
 ## Organização do código
 
-Os programas Go são organizados em pacotes. Um pacote é uma coleção de arquivos de origem no mesmo diretório que são compilados juntos. Funções, tipos, variáveis ​​e constantes definidas em um arquivo de origem são visíveis para todos os outros arquivos de origem do mesmo pacote.
+Os programas Go são organizados em pacotes. Um pacote é uma coleção de arquivos fonte compilados juntos no mesmo diretório. Funções, tipos, variáveis ​​e constantes definidas em um arquivo de origem são visíveis para todos os outros arquivos de origem no mesmo pacote.
 
-Um repositório contém um ou mais módulos. Um módulo é uma coleção de pacotes Go relacionados que são lançados juntos. Um repositório Go normalmente contém apenas um módulo, localizado na raiz do repositório. Um arquivo nomeado ali go.mod declara o caminho do módulo: o prefixo do caminho de importação para todos os pacotes dentro do módulo. O módulo contém os pacotes no diretório que contém seu arquivo go.mod, bem como os subdiretórios desse diretório, até o próximo subdiretório que contém outro arquivo go.mod (se houver).
+Um repositório contém um ou mais módulos. Um módulo é composto por vários pacotes Go que estão relacionados e são publicados juntos. Um repositório Go normalmente contém apenas um módulo, localizado na raiz do repositório. Um arquivo chamado go.mod declara o caminho do módulo ou o prefixo do caminho de importação para todos os pacotes no módulo. Um módulo inclui pacotes de um diretório contendo um arquivo go.mod para um subdiretório desse diretório, até o próximo subdiretório contendo outro arquivo go.mod (se houver).
 
 Observe que você não precisa publicar seu código em um repositório remoto antes de construí-lo. Um módulo pode ser definido localmente sem pertencer a um repositório. No entanto, é um bom hábito organizar seu código como se você fosse publicá-lo algum dia.
 
