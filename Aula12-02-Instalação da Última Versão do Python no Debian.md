@@ -121,15 +121,27 @@ sudo make install
 Para confirmar se o Python foi instalado corretamente, use o comando `which` seguido pela versão do Python que você instalou:
 
 ```bash
-which python3.12.4
+which python3.12
 ```
 
 Se o comando retornar o caminho para o Python, isso indica que a instalação foi realizada com sucesso.
 
+Pode-se também dar o comando de verificação de versão:
+
+```bash
+python3 --version
+```
+
+A resposta deverá ser:
+
+```bash
+Python 3.12.4
+```
+
 Para acessar o console do Python, execute o comando:
 
 ```bash
-python3.12.4
+python3
 ```
 
 Isso abrirá o console do Python no terminal, onde você poderá digitar e testar comandos.
@@ -139,23 +151,38 @@ Isso abrirá o console do Python no terminal, onde você poderá digitar e testa
 O Python vem com o gerenciador de pacotes `pip`, que facilita a instalação de bibliotecas adicionais. Para instalar uma biblioteca, como o Pandas, utilize um dos seguintes comandos:
 
 ```bash
-python3.12.4 -m pip install pandas
+python3 -m pip install pandas
+pip3 install --upgrade pip
 ```
 
 ou, alternativamente:
 
 ```bash
-pip3.12.4 install pandas
+pip3 install pandas
+pip3 install --upgrade pip
 ```
 
 Após a instalação, verifique se a biblioteca foi instalada corretamente importando-a no console do Python e executando o seguinte código:
+Crie um arquivo de teste com o seguinte conteúdo:
+
+```bash
+vi teste.py
+```
 
 ```python
 import pandas
 print(pandas.__version__)
 ```
 
-### Conclusão
+Agora execute o arquivo pelo python:
+
+```bash
+python3 teste.py
+```
+
+Você deverá ver a versão do pandas.
+
+## Conclusão
 
 Parabéns! Você agora tem o Python instalado em seu sistema Linux. Este processo não só garante que você esteja usando a versão mais recente do Python, mas também proporciona um maior controle sobre a instalação e oferece uma oportunidade para aprofundar seu conhecimento sobre o funcionamento do seu sistema operacional.
 
